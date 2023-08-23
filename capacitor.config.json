@@ -1,0 +1,8 @@
+{
+  "appId": "org.test.app",
+  "appName": "APP",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https"
+  }
+}
