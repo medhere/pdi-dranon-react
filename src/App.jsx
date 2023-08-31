@@ -15,6 +15,13 @@ import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import OTP from "./pages/auth/OTP";
 import ForgetPassword from "./pages/auth/ForgetPassword";
+import SplashScreen from "./pages/splash/SplashScreen";
+import LoginScreen from "./pages/auth/LoginScreen";
+import RegisterScreen from "./pages/auth/RegisterScreen";
+import VerifyScreen from "./pages/auth/VerifyScreen";
+import OTPScreen from "./pages/auth/OTPScreen";
+import ForgetPasswordScreen from "./pages/auth/ForgetPasswordScreen";
+import ResetPasswordScreen from "./pages/auth/ResetPasswordScreen";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -43,15 +50,26 @@ export default function App() {
               <Loadables>
                 <Notifications />
                 <Routes>
-                  <Route path="/login" element={<Login />}></Route>
-                  <Route path="/signup" element={<SignUp />}></Route>
-                  <Route path="/otp" element={<OTP />}></Route>
+                  <Route path="/" element={<SplashScreen />}></Route>
+                  <Route path="/login" element={<LoginScreen />}></Route>
+                  <Route path="/register" element={<RegisterScreen />}></Route>
+                  <Route path="/verify" element={<VerifyScreen />}></Route>
+                  <Route path="/verify-otp" element={<OTPScreen />}></Route>
                   <Route
+                    path="/forget-password"
+                    element={<ForgetPasswordScreen />}
+                  ></Route>
+                  <Route
+                    path="/reset-password"
+                    element={<ResetPasswordScreen />}
+                  ></Route>
+                  <Route path="/otp" element={<OTP />}></Route>
+                  {/* <Route
                     path="/forgot-password"
                     element={<ForgetPassword />}
-                  ></Route>
+                  ></Route> */}
 
-                  <Route path="/" element={<IonicPage />}></Route>
+                  {/* <Route path="/" element={<IonicPage />}></Route> */}
                   <Route path="admin" element={<Nav />}>
                     <Route index element={<>Index Admin</>} />
                     <Route path=":id" element={<>Route</>} />
