@@ -7,6 +7,7 @@ import { BiSolidLockOpen, BiSolidUserPlus } from "react-icons/bi";
 import MainButton from "../../components/webComponent/MainButton";
 import MainInput from "../../components/webComponent/MainInput";
 import { NativeSelect } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const VerifyScreen = () => {
   return (
@@ -50,7 +51,9 @@ const VerifyScreen = () => {
               <MainInput />
             </div>
           </div>
-          <MainButton style="mt-16">Get Code</MainButton>
+          <Link to="/auth/verify-otp">
+            <MainButton style="mt-16">Get Code</MainButton>
+          </Link>
         </form>
       </section>
     </body>

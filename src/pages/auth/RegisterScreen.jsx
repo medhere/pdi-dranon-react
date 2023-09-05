@@ -63,13 +63,15 @@ const RegisterScreen = () => {
 
           <div>
             <Link
-              to="/forget-password"
+              to="/auth/forget-password"
               className="text-[#1977F3] underline text-sm tracking-wide font-semibold text-end"
             >
               Forgot Password?
             </Link>
           </div>
-          <MainButton style="mt-5">Sign Up</MainButton>
+          <Link to="/auth/verify">
+            <MainButton style="mt-5">Sign Up</MainButton>
+          </Link>
         </form>
         <div className="flex items-center my-5 justify-center">
           <hr className=" bg-pink-500 w-14" />
@@ -78,7 +80,7 @@ const RegisterScreen = () => {
           </p>
           <hr className=" bg-pink-500 w-14" />
         </div>
-        <Link to="/login">
+        <Link to="/auth/login">
           <MainButton style="bg-white border-none shadow">
             Login Here
           </MainButton>

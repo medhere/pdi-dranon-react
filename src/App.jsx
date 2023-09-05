@@ -51,39 +51,22 @@ export default function App() {
                 <Notifications />
                 <Routes>
                   <Route path="/" element={<SplashScreen />}></Route>
-                  <Route path="/login" element={<LoginScreen />}></Route>
-                  <Route path="/register" element={<RegisterScreen />}></Route>
-                  <Route path="/verify" element={<VerifyScreen />}></Route>
-                  <Route path="/verify-otp" element={<OTPScreen />}></Route>
-                  <Route
-                    path="/forget-password"
-                    element={<ForgetPasswordScreen />}
-                  ></Route>
-                  <Route
-                    path="/reset-password"
-                    element={<ResetPasswordScreen />}
-                  ></Route>
-                  <Route path="/otp" element={<OTP />}></Route>
-                  {/* <Route
-                    path="/forgot-password"
-                    element={<ForgetPassword />}
-                  ></Route> */}
+                  <Route path="auth">
+                    <Route path="login" element={<LoginScreen />}></Route>
+                    <Route path="register" element={<RegisterScreen />}></Route>
+                    <Route path="verify" element={<VerifyScreen />}></Route>
+                    <Route path="verify-otp" element={<OTPScreen />}></Route>
+                    <Route
+                      path="forget-password"
+                      element={<ForgetPasswordScreen />}
+                    ></Route>
+                    <Route
+                      path="reset-password"
+                      element={<ResetPasswordScreen />}
+                    ></Route>
+                    <Route path="otp" element={<OTP />}></Route>
+                  </Route>
 
-                  {/* <Route path="/" element={<IonicPage />}></Route> */}
-                  <Route path="admin" element={<Nav />}>
-                    <Route index element={<>Index Admin</>} />
-                    <Route path=":id" element={<>Route</>} />
-                  </Route>
-                  <Route
-                    element={
-                      <RequireAuth loginPath={"/login"}>
-                        <Outlet />
-                      </RequireAuth>
-                    }
-                  >
-                    <Route path="secure" element={<>123</>} />
-                    <Route path="456" element={<>456</>} />
-                  </Route>
                   <Route path="*" element={<>No route found</>}></Route>
                 </Routes>
               </Loadables>

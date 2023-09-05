@@ -2,7 +2,6 @@ import React from "react";
 import MainHeader from "../../components/webComponent/MainHeader";
 import icon from "../../assets/images/icon1.png";
 import { TextInput } from "@mantine/core";
-// import { IconUserBolt } from "@tabler/icons-react";
 import { BiSolidLockOpen, BiSolidUserPlus } from "react-icons/bi";
 import MainButton from "../../components/webComponent/MainButton";
 import MainInput from "../../components/webComponent/MainInput";
@@ -32,7 +31,7 @@ const LoginScreen = () => {
           </div>
           <div>
             <Link
-              to="/forget-password"
+              to="/auth/forget-password"
               className="text-[#1977F3] underline text-sm tracking-wide font-semibold text-end"
             >
               Forgot Password?
@@ -45,7 +44,7 @@ const LoginScreen = () => {
           <p className="text-sm font-medium mx-3">Don't have an account?</p>
           <hr className=" bg-pink-500 w-14" />
         </div>
-        <Link to="/register">
+        <Link to="/auth/register">
           <MainButton style="bg-white border-none shadow">
             Get an account here
           </MainButton>

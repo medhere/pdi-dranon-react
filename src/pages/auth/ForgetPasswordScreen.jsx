@@ -24,15 +24,16 @@ const ForgetPasswordScreen = () => {
             </div>
             <MainInput placeholder="example@mail.com" />
           </div>
-
-          <MainButton style="mt-5">Send</MainButton>
+          <Link to="/auth/verify-otp">
+            <MainButton style="mt-5">Send</MainButton>
+          </Link>
         </form>
         <div className="flex items-center my-5 justify-center">
           <hr className=" bg-pink-500 w-14" />
           <p className="text-sm font-medium mx-3">Or </p>
           <hr className=" bg-pink-500 w-14" />
         </div>
-        <Link to="/register">
+        <Link to="/auth/register">
           <MainButton style="bg-white border-none shadow">Sign Up</MainButton>
         </Link>
       </section>

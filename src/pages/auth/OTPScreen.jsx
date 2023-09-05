@@ -1,6 +1,7 @@
 import { PinInput, Group } from "@mantine/core";
 import MainHeader from "../../components/webComponent/MainHeader";
 import MainButton from "../../components/webComponent/MainButton";
+import { Link } from "react-router-dom";
 
 const OTPScreen = () => {
   return (
@@ -26,7 +27,9 @@ const OTPScreen = () => {
               <span className="text-[#1977F3] font-semibold">RESEND</span>
             </p>
           </div>
-          <MainButton style="mt-16">Submit</MainButton>
+          <Link to="/auth/login">
+            <MainButton style="mt-16">Submit</MainButton>
+          </Link>
         </form>
       </section>
     </body>
