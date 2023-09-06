@@ -22,6 +22,9 @@ import VerifyScreen from "./pages/auth/VerifyScreen";
 import OTPScreen from "./pages/auth/OTPScreen";
 import ForgetPasswordScreen from "./pages/auth/ForgetPasswordScreen";
 import ResetPasswordScreen from "./pages/auth/ResetPasswordScreen";
+import Settings from "./pages/profile/Settings";
+import EditProfile from "./pages/profile/EditProfile";
+import UserProfileScreen from "./pages/profile/UserProfileScreen";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -51,6 +54,7 @@ export default function App() {
                 <Notifications />
                 <Routes>
                   <Route path="/" element={<SplashScreen />}></Route>
+                  {/* AUTHENTICATION */}
                   <Route path="auth">
                     <Route path="login" element={<LoginScreen />}></Route>
                     <Route path="register" element={<RegisterScreen />}></Route>
@@ -66,6 +70,13 @@ export default function App() {
                     ></Route>
                     <Route path="otp" element={<OTP />}></Route>
                   </Route>
+                  {/* APP PAGES */}
+                  <Route path="/settings" element={<Settings />}></Route>
+                  <Route path="/edit-profile" element={<EditProfile />}></Route>
+                  <Route
+                    path="/profile"
+                    element={<UserProfileScreen />}
+                  ></Route>
 
                   <Route path="*" element={<>No route found</>}></Route>
                 </Routes>

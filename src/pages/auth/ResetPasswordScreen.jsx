@@ -3,20 +3,28 @@ import MainHeader from "../../components/webComponent/MainHeader";
 import icon from "../../assets/images/icon1.png";
 import { TextInput } from "@mantine/core";
 // import { IconUserBolt } from "@tabler/icons-react";
-import { BiSolidLockOpen, BiSolidUserPlus } from "react-icons/bi";
+import {
+  BiChevronLeftCircle,
+  BiSolidLockOpen,
+  BiSolidUserPlus,
+} from "react-icons/bi";
 import MainButton from "../../components/webComponent/MainButton";
 import MainInput from "../../components/webComponent/MainInput";
+import { useNavigate } from "react-router-dom";
 
 const ResetPasswordScreen = () => {
+  const navigate = useNavigate();
   return (
-    <body className="h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col mt-[15%] items-center">
-      <section className="w-[95%] md:w-[60%] lg:w-[40%] px-4">
+    <body className="h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col items-center">
+      <section className="w-[95%] md:w-[60%] sm:w-[70%] lg:w-[40%] px-4 mt-10">
+        <div className="flex justify-between items-center ">
+          <BiChevronLeftCircle size={30} onClick={() => navigate(-1)} />
+          <MainHeader text="Change Password" classes="text-xl" />
+          <div className="w-5"></div>
+        </div>
         {/* <MainHeader text="Reset Password" classes="mb-10" /> */}
-        <form action="">
-          <label
-            for="countries_disabled"
-            class="block mb-2  font-medium text-gray-500 "
-          >
+        <form action="" className="mt-10">
+          <label for="countries_disabled" class="block font-bold text-lg ">
             Enter new Password
           </label>
           <div class="relative mb-6 ">
@@ -27,7 +35,7 @@ const ResetPasswordScreen = () => {
           </div>
           <label
             for="countries_disabled"
-            class="block mb-2  font-medium text-gray-500 "
+            class="block mb-2  font-bold text-lg "
           >
             Confirm Password
           </label>

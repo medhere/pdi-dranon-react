@@ -37,6 +37,7 @@
     "@mantine/notifications": "^6.0.14",
     "@mantine/nprogress": "^6.0.14",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tabler/icons-react": "^2.33.0",
     "axios": "^0.27.2",
     "axios-hooks": "^4.0.0",
     "axios-progress-bar": "^1.2.0",

@@ -37,7 +37,9 @@ const LoginScreen = () => {
               Forgot Password?
             </Link>
           </div>
-          <MainButton style="mt-5">LOGIN</MainButton>
+          <Link to="/profile">
+            <MainButton style="mt-5">LOGIN</MainButton>
+          </Link>
         </form>
         <div className="flex items-center my-5 justify-center">
           <hr className=" bg-pink-500 w-14" />
