@@ -46,7 +46,7 @@ const ResetPasswordScreen = () => {
             <MainInput placeholder="Password" type="password" />
           </div>
 
-          <MainButton style="mt-5">Send</MainButton>
+          <MainButton style="mt-5">Confirm</MainButton>
         </form>
       </section>
     </body>
