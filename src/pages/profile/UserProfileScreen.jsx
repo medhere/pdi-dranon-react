@@ -15,7 +15,7 @@ import {
 const UserProfileScreen = () => {
   const navigate = useNavigate();
   return (
-    <body className="min-h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col items-center">
+    <>
       <div class="w-full h-[200px] flex justify-between px-10 items-center bg-[#f18952]">
         <div class="w-[95%] md:w-[60%] sm:w-[70%] lg:w-[40%] flex justify-between mx-auto">
           <BiChevronLeftCircle
@@ -133,7 +133,7 @@ const UserProfileScreen = () => {
               <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 px-4">
                 <h4 class="text-xl text-gray-900 font-bold pt-5">Info</h4>
 
-                <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 mt-4">
+                <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 my-8">
                   <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
                     <div class="flex items-center justify-between">
                       <span class="font-bold text-sm text-indigo-600">
@@ -211,7 +211,8 @@ const UserProfileScreen = () => {
           </div>
         </div>
       </div>
-    </body>
+      <div className="mt-40"></div>
+    </>
   );
 };
 

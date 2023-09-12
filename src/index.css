@@ -15,11 +15,17 @@
   font-family: "Asap Condensed", sans-serif;
 }
 
+@font-face {
+  font-family: mainFont;
+  src: url("./fonts/Outfit-Regular.ttf");
+}
 /*Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: blue white;
+  font-family: mainFont;
 }
+
 /*Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 8px;

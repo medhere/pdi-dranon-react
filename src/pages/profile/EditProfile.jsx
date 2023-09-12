@@ -11,7 +11,7 @@ import MainInput from "../../components/webComponent/MainInput";
 const EditProfile = () => {
   const navigate = useNavigate();
   return (
-    <body className="min-h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col items-center">
+    <>
       <section className="w-[95%] md:w-[60%] sm:w-[70%] lg:w-[40%] px-4 mt-10">
         <div className="flex justify-between items-center">
           <BiChevronLeftCircle size={30} onClick={() => navigate(-1)} />
@@ -61,7 +61,7 @@ const EditProfile = () => {
           </form>
         </section>
       </section>
-    </body>
+    </>
   );
 };
 

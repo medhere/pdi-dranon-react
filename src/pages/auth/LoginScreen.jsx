@@ -37,7 +37,7 @@ const LoginScreen = () => {
               Forgot Password?
             </Link>
           </div>
-          <Link to="/profile">
+          <Link to="/home">
             <MainButton style="mt-5">LOGIN</MainButton>
           </Link>
         </form>
