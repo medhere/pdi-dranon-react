@@ -8,8 +8,8 @@ import {
   AiOutlineClockCircle,
   AiOutlineSearch,
 } from "react-icons/ai";
-import docImage from "../../assets/images/doc.png";
-import docImage2 from "../../assets/images/doc2.png";
+import docImage from "../../assets/images/doc4.jpg";
+import docImage2 from "../../assets/images/doc5.jpg";
 import { IconStethoscope, IconVaccineBottle } from "@tabler/icons-react";
 import { IconBuildingHospital } from "@tabler/icons-react";
 import { IconPill } from "@tabler/icons-react";
@@ -109,37 +109,17 @@ const Home = () => {
         <h1 className={`font-bold text-3xl text-blue-950 mt-6`}>
           Your Consultations
         </h1>
-        <div class="bg-white rounded-lg shadow-2xl flex my-6">
-          <img src={docImage} alt="Laptop on Desk" class="w-1/3 rounded-full" />
-          <div class="flex-1 px-3 pt-2">
-            <h2 class="font-bold text-xl md:text-3xl text-orange-700">
-              Dr. Komolafe
-            </h2>
-            <p class="text-orange-700">specialist</p>
-            <div className="flex justify-around mt-2">
-              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
-                <AiOutlineCalendar />
-                <p className="text-xs font-medium">18th September</p>
-              </div>
-              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
-                <AiOutlineClockCircle />
-                <p className="text-xs font-medium">4:30pm</p>
-              </div>
+
+        <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+          <img src={docImage2} alt="Laptop on Desk" class="w-1/3 " />
+          <div class="flex flex-col px-5 pt-2">
+            <div className="flex-1 flex flex-col justify-center">
+              <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                Dr. Katie
+              </h2>
+              <p class="text-orange-700">surgeon</p>
             </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-2xl flex my-6">
-          <img
-            src={docImage2}
-            alt="Laptop on Desk"
-            class="w-1/3 rounded-full"
-          />
-          <div class="flex-1 px-3 pt-2">
-            <h2 class="font-bold text-xl md:text-3xl text-orange-700">
-              Dr. John
-            </h2>
-            <p class="text-orange-700">surgeon</p>
-            <div className="flex justify-around mt-2">
+            <div className="flex md:space-x-5 space-x-1 my-2">
               <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
                 <AiOutlineCalendar />
                 <p className="text-xs font-medium">22th November</p>
@@ -147,6 +127,28 @@ const Home = () => {
               <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
                 <AiOutlineClockCircle />
                 <p className="text-xs font-medium">10:30am</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+          <img src={docImage} alt="Laptop on Desk" class="w-1/3 " />
+          <div class="flex flex-col px-5 pt-2">
+            <div className="flex-1 flex flex-col justify-center">
+              <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                Dr. Komolafe
+              </h2>
+              <p class="text-orange-700">specialist</p>
+            </div>
+            <div className="flex md:space-x-5 space-x-1 my-2">
+              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
+                <AiOutlineCalendar />
+                <p className="text-xs font-medium">3rd December</p>
+              </div>
+              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
+                <AiOutlineClockCircle />
+                <p className="text-xs font-medium">3:45pm</p>
               </div>
             </div>
           </div>
