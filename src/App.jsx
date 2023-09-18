@@ -27,6 +27,8 @@ import EditProfile from "./pages/profile/EditProfile";
 import UserProfileScreen from "./pages/profile/UserProfileScreen";
 import Home from "./pages/main/Home";
 import AppLayout from "./layout/AppLayout";
+import Doctors from "./pages/doctors/Doctors";
+import DoctorChat from "./pages/doctors/DoctorChat";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -85,6 +87,11 @@ export default function App() {
                       element={<EditProfile />}
                     ></Route>
                     <Route path="/settings" element={<Settings />}></Route>
+                    <Route path="/doctors" element={<Doctors />}></Route>
+                    <Route
+                      path="/doctor/chat/:id"
+                      element={<DoctorChat />}
+                    ></Route>
                   </Route>
                   {/* ERROR PAGES */}
                   <Route path="*" element={<>No route found</>}></Route>

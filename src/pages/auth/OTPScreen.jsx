@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const OTPScreen = () => {
   return (
     <body className="h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col justify-center items-center">
-      <section className="w-[95%] md:w-[60%] lg:w-[40%] px-4">
+      <section className="w-[95%] md:w-[70%] lg:w-[50%] xl:w-[40%] px-4">
         <div className="flex justify-center items-center mb-5">
           <MainHeader text="OTP Verification" />
         </div>

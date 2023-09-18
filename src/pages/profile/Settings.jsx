@@ -14,8 +14,10 @@ import { FiLogOut, FiUsers } from "react-icons/fi";
 import MainHeader from "../../components/webComponent/MainHeader";
 import MiniHeader from "../../components/webComponent/MiniHeader";
 import { Link, useNavigate } from "react-router-dom";
+import { ScrollToTop } from "../../libs/utils";
 
 const Settings = () => {
+  ScrollToTop();
   const Account = [
     {
       title: "Edit Profile",
@@ -68,7 +70,7 @@ const Settings = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="w-[95%] md:w-[60%] sm:w-[70%] lg:w-[40%] px-4 mt-10">
+      <section className="w-[95%] md:w-[70%] sm:w-[70%] lg:w-[50%] xl:w-[40%] px-4 mt-10">
         <div className="flex justify-between items-center">
           <BiChevronLeftCircle size={30} onClick={() => navigate(-1)} />
           <MainHeader text="Settings" />

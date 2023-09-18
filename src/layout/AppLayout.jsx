@@ -1,3 +1,4 @@
+import { IconStethoscope } from "@tabler/icons-react";
 import { IconCalendarSearch } from "@tabler/icons-react";
 import React from "react";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineUser } from "react-icons/ai";
@@ -13,7 +14,7 @@ const AppLayout = () => {
       <div className="w-full bg-[#f18952]">
         <section
           id="bottom-navigation"
-          className="block fixed inset-x-0 bottom-0 z-10 bg-[#f18952] shadow-md w-full md:w-[60%] sm:w-[70%] lg:w-[40%] mx-auto"
+          className="block fixed inset-x-0 bottom-0 z-10 bg-[#f18952] shadow-md w-full md:w-[70%]  lg:w-[50%] xl:w-[40%] mx-auto"
         >
           <div id="tabs" className="flex justify-between">
             <Link
@@ -38,17 +39,17 @@ const AppLayout = () => {
                 Schedule
               </span>
             </a>
-            <a
-              href="#"
+            <Link
+              to="/doctors"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${
-                pathname.includes("/explore") && "text-[#f18952] bg-white"
+                pathname.includes("/doctor") && "text-[#f18952] bg-white"
               }`}
             >
-              <MdOutlineExplore size={26} className="mx-auto mb-1" />
+              <IconStethoscope size={26} className="mx-auto mb-1" />
               <span className="tab tab-explore block text-xs font-semibold">
-                Explore
+                Doctors
               </span>
-            </a>
+            </Link>
             <Link
               to="/profile"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${

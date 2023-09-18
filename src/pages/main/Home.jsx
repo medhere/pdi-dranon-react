@@ -1,20 +1,33 @@
 import React from "react";
 import { BiChevronLeftCircle } from "react-icons/bi";
 import MainHeader from "../../components/webComponent/MainHeader";
-import { MdNotifications, MdOutlineNotificationsNone } from "react-icons/md";
+import {
+  MdEmail,
+  MdNotifications,
+  MdOutlineNotificationsNone,
+} from "react-icons/md";
 import MainInput from "../../components/webComponent/MainInput";
 import {
+  AiFillPhone,
   AiOutlineCalendar,
   AiOutlineClockCircle,
   AiOutlineSearch,
 } from "react-icons/ai";
 import docImage from "../../assets/images/doc4.jpg";
 import docImage2 from "../../assets/images/doc5.jpg";
-import { IconStethoscope, IconVaccineBottle } from "@tabler/icons-react";
+import {
+  IconPhoneOutgoing,
+  IconStethoscope,
+  IconVaccineBottle,
+} from "@tabler/icons-react";
 import { IconBuildingHospital } from "@tabler/icons-react";
 import { IconPill } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
+import { IconMessageDots } from "@tabler/icons-react";
+import { ScrollToTop } from "../../libs/utils";
 
 const Home = () => {
+  ScrollToTop();
   const Icons = [
     {
       title: "Doctors",
@@ -55,7 +68,7 @@ const Home = () => {
   ];
   return (
     <>
-      <section className="w-[95%] md:w-[60%] sm:w-[70%] lg:w-[40%] px-4 mt-7">
+      <section className="w-[95%] md:w-[70%] xl:w-[40%] lg:w-[50%] px-4 mt-7">
         <div className="flex justify-between items-center">
           <div>
             <h1 className={`font-bold text-3xl text-blue-950`}>Hi, Sam</h1>
@@ -97,63 +110,61 @@ const Home = () => {
             <p className="text-orange-700 mb-2">
               Get The care you need at your fingertips!
             </p>
-            {/* <a
-              href="#"
-              className="text-purple-600 hover:text-purple-500 underline text-sm"
-            >
-              Read More 👉
-            </a> */}
           </div>
         </div>
+        {/* Consultation */}
+        <section>
+          <div className="flex justify-between items-center mt-10">
+            <h1 className={`font-bold text-3xl text-blue-950`}>
+              Your Consultations
+            </h1>
+          </div>
 
-        <h1 className={`font-bold text-3xl text-blue-950 mt-6`}>
-          Your Consultations
-        </h1>
-
-        <div class="bg-white rounded-lg border border-orange-400 flex my-6">
-          <img src={docImage2} alt="Laptop on Desk" class="w-1/3 " />
-          <div class="flex flex-col px-5 pt-2">
-            <div className="flex-1 flex flex-col justify-center">
-              <h2 class="font-bold text-xl md:text-3xl text-orange-700">
-                Dr. Katie
-              </h2>
-              <p class="text-orange-700">surgeon</p>
-            </div>
-            <div className="flex md:space-x-5 space-x-1 my-2">
-              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
-                <AiOutlineCalendar />
-                <p className="text-xs font-medium">22th November</p>
+          <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+            <img src={docImage2} alt="Laptop on Desk" class="w-1/3 " />
+            <div class="flex flex-col flex-1 pt-2">
+              <div className="flex-1  px-5 flex flex-col justify-center">
+                <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                  Dr. Katie
+                </h2>
+                <p class="text-orange-700">surgeon</p>
               </div>
-              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
-                <AiOutlineClockCircle />
-                <p className="text-xs font-medium">10:30am</p>
+              <div className="flex md:space-x-5 space-x-1 px-2 my-2">
+                <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                  <AiOutlineCalendar />
+                  <p className="text-xs ml-1 font-medium">22th Nov</p>
+                </div>
+                <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                  <AiOutlineClockCircle />
+                  <p className="text-xs ml-1 font-medium">10:30am</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="bg-white rounded-lg border border-orange-400 flex my-6">
-          <img src={docImage} alt="Laptop on Desk" class="w-1/3 " />
-          <div class="flex flex-col px-5 pt-2">
-            <div className="flex-1 flex flex-col justify-center">
-              <h2 class="font-bold text-xl md:text-3xl text-orange-700">
-                Dr. Komolafe
-              </h2>
-              <p class="text-orange-700">specialist</p>
-            </div>
-            <div className="flex md:space-x-5 space-x-1 my-2">
-              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
-                <AiOutlineCalendar />
-                <p className="text-xs font-medium">3rd December</p>
+          <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+            <img src={docImage} alt="Laptop on Desk" class="w-1/3 " />
+            <div class="flex flex-col flex-1 pt-2">
+              <div className="flex-1 flex px-5  flex-col justify-center">
+                <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                  Dr. Komolafe
+                </h2>
+                <p class="text-orange-700">specialist</p>
               </div>
-              <div className="flex items-center py-1 bg-orange-200 text-orange-700 rounded-full px-2">
-                <AiOutlineClockCircle />
-                <p className="text-xs font-medium">3:45pm</p>
+              <div className="flex md:space-x-5 space-x-1 px-2 my-2">
+                <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                  <AiOutlineCalendar />
+                  <p className="text-xs ml-1 font-medium">22th Nov</p>
+                </div>
+                <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                  <AiOutlineClockCircle />
+                  <p className="text-xs ml-1 font-medium">10:30am</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+        </section>
+        {/* What we do */}
         <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-3xl text-blue-950`}>Our Services</h1>
@@ -161,7 +172,7 @@ const Home = () => {
               See More
             </p>
           </div>
-          <div className="flex justify-between ">
+          <div className="flex justify-between md:justify-around ">
             {Icons.map((icon) => (
               <div className="group cursor-pointer">
                 <div className="p-5 group-hover:bg-orange-200 bg-white shadow-xl mt-5 rounded-2xl group-hover:scale-110">
@@ -172,6 +183,88 @@ const Home = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+        {/* Meet Doctors */}
+        <section>
+          <div className="flex justify-between items-center mt-10">
+            <h1 className={`font-bold text-3xl text-blue-950`}>
+              Meet Our Doctors
+            </h1>
+            <Link
+              to="/doctors"
+              className="text-orange-600 font-semibold cursor-pointer"
+            >
+              See More
+            </Link>
+          </div>
+
+          <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+            <img
+              src={docImage2}
+              alt="Laptop on Desk"
+              class="w-1/3 hidden md:block"
+            />
+            <div class="flex flex-col  pt-2 flex-1">
+              <div className="flex-1 px-5 flex flex-col justify-center">
+                <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                  Dr. Katie
+                </h2>
+                <p class="text-orange-700">surgeon</p>
+                <div className="flex items-center space-x-2 my-2">
+                  <AiFillPhone className="text-orange-900" />
+                  <p className="text-xs text-orange-700">+234-567-89012</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MdEmail className="text-orange-900" />
+                  <p className="text-xs text-orange-700">Superadmin@mail.com</p>
+                </div>
+              </div>
+              <div className="flex mt-2  divide-x-2 divide-orange-700">
+                <div className="flex flex-1 justify-center items-center py-2.5 bg-orange-200 hover:bg-orange-700 duration-300 transition-all text-orange-700 hover:text-orange-100 px-2">
+                  <IconMessageDots />
+                  <p className="text-xs font-medium">Message</p>
+                </div>
+                <div className="flex flex-1 justify-center items-center py-2.5 bg-orange-200 hover:bg-orange-700 duration-300 transition-all text-orange-700 hover:text-orange-100 px-2">
+                  <IconPhoneOutgoing />
+                  <p className="text-xs font-medium">Call</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+            <img
+              src={docImage}
+              alt="Laptop on Desk"
+              class="w-1/3 hidden md:block"
+            />
+            <div class="flex flex-col  pt-2 flex-1">
+              <div className="flex-1 px-5 flex flex-col justify-center">
+                <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                  Dr. John
+                </h2>
+                <p class="text-orange-700">surgeon</p>
+                <div className="flex items-center space-x-2 my-2">
+                  <AiFillPhone className="text-orange-900" />
+                  <p className="text-xs text-orange-700">+234-567-89012</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MdEmail className="text-orange-900" />
+                  <p className="text-xs text-orange-700">Superadmin@mail.com</p>
+                </div>
+              </div>
+              <div className="flex mt-2  divide-x-2 divide-orange-700">
+                <div className="flex flex-1 justify-center items-center py-2.5 bg-orange-200 hover:bg-orange-700 duration-300 transition-all text-orange-700 hover:text-orange-100 px-2">
+                  <IconMessageDots />
+                  <p className="text-xs font-medium">Message</p>
+                </div>
+                <div className="flex flex-1 justify-center items-center py-2.5 bg-orange-200 hover:bg-orange-700 duration-300 transition-all text-orange-700 hover:text-orange-100 px-2">
+                  <IconPhoneOutgoing />
+                  <p className="text-xs font-medium">Call</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </section>
