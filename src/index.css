@@ -77,3 +77,10 @@
 .text-wrap {
   text-wrap: balance;
 }
+
+.doc-bubble {
+  @apply bg-orange-100 w-3/4 mx-4 mb-2 p-2 rounded-lg;
+}
+.patient-bubble {
+  @apply bg-green-100 ml-auto w-3/4 mx-4 mb-2 p-2 rounded-lg;
+}

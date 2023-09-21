@@ -150,6 +150,32 @@ const Home = () => {
           </div>
         </div>
         {/* Medical Specialties */}
+
+        {/* CTA */}
+
+        <div class="bg-orange-100 ">
+          <div class="lg:flex lg:items-center lg:justify-between w-full mx-auto py-6 my-10 px-4 sm:px-2 lg:py-16 lg:px-8">
+            <h2 class="text-2xl font-extrabold text-black  sm:text-4xl">
+              <span class="block">Want to Talk to a Doctor?</span>
+              <span class="block text-orange-500 text-lg">
+                It&#x27;s today or never.
+              </span>
+            </h2>
+            <div class="lg:mt-0 lg:flex-shrink-0 flex justify-end">
+              <div class=" inline-flex justify-end rounded-md shadow">
+                <Link to={`/doctor/chat/1`}>
+                  <button
+                    type="button"
+                    class="py-2 px-6  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                  >
+                    Consult a Doctor
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>

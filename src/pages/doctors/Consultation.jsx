@@ -13,14 +13,25 @@ import {
 } from "@tabler/icons-react";
 import { IconTestPipeOff } from "@tabler/icons-react";
 import docImage from "../../assets/images/doc4.jpg";
+import { IconCircleChevronLeft } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 
 const Consultation = () => {
   const iconStyle = { width: rem(12), height: rem(12) };
+  const navigate = useNavigate();
   return (
     <>
       <section className="w-[100%] md:w-[100%]  lg:w-[60%] xl:w-[40%] no-scrollbar">
         <div class=" bg-white  overflow-hidden ">
-          <div class="bg-cover h-32 bg-orange-100"></div>
+          <div class="bg-cover h-32 bg-orange-100">
+            <div className="flex items-center p-4">
+              <IconCircleChevronLeft
+                size={28}
+                onClick={() => navigate(-1)}
+                className="cursor-pointer "
+              />
+            </div>
+          </div>
           <div class=" px-4 pb-6">
             <div class="text-center sm:text-left sm:flex mb-4">
               <img
