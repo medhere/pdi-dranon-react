@@ -70,7 +70,7 @@ const Settings = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="w-[95%] md:w-[70%] sm:w-[70%] lg:w-[50%] xl:w-[40%] px-4 mt-10">
+      <section className="w-[100%] md:w-[100%] sm:w-[70%] lg:w-[60%] xl:w-[40%] px-4 mt-10">
         <div className="flex justify-between items-center">
           <BiChevronLeftCircle size={30} onClick={() => navigate(-1)} />
           <MainHeader text="Settings" />

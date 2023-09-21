@@ -14,7 +14,7 @@ const AppLayout = () => {
       <div className="w-full bg-[#f18952]">
         <section
           id="bottom-navigation"
-          className="block fixed inset-x-0 bottom-0 z-10 bg-[#f18952] shadow-md w-full md:w-[70%]  lg:w-[50%] xl:w-[40%] mx-auto"
+          className="block fixed inset-x-0 bottom-0 z-10 bg-[#f18952] shadow-md w-full md:w-[100%]  lg:w-[60%] xl:w-[40%] mx-auto"
         >
           <div id="tabs" className="flex justify-between">
             <Link

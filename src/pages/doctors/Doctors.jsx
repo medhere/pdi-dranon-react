@@ -9,7 +9,7 @@ const Doctors = () => {
   ScrollToTop();
   return (
     <>
-      <section className="w-[95%] md:w-[70%] sm:w-[70%] lg:w-[50%] xl:w-[40%] px-4 mt-7">
+      <section className="w-[100%] md:w-[100%] sm:w-[70%] lg:w-[60%] xl:w-[40%] px-4 mt-7">
         <div className="flex justify-between items-center">
           <div>
             <h1 className={`font-bold text-3xl text-blue-950`}>

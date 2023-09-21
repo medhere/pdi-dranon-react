@@ -25,6 +25,13 @@ import { IconPill } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { IconMessageDots } from "@tabler/icons-react";
 import { ScrollToTop } from "../../libs/utils";
+import preg from "../../assets/images/New folder/preg.png";
+import baby from "../../assets/images/New folder/baby.png";
+import hair from "../../assets/images/New folder/hair.png";
+import stethoscope from "../../assets/images/New folder/stethoscope.png";
+import sex from "../../assets/images/New folder/sex.png";
+import digestion from "../../assets/images/New folder/digestion.png";
+import psyc from "../../assets/images/New folder/psyc.png";
 
 const Home = () => {
   ScrollToTop();
@@ -66,9 +73,39 @@ const Home = () => {
       ),
     },
   ];
+  const Specialties = [
+    {
+      title: "Woman's Health",
+      img: preg,
+    },
+    {
+      title: "Skin & Hair",
+      img: hair,
+    },
+    {
+      title: "Child Specialist",
+      img: baby,
+    },
+    {
+      title: "General Physician",
+      img: stethoscope,
+    },
+    {
+      title: "Sexology",
+      img: sex,
+    },
+    {
+      title: "Digestion",
+      img: digestion,
+    },
+    {
+      title: "Pyshatric",
+      img: psyc,
+    },
+  ];
   return (
     <>
-      <section className="w-[95%] md:w-[70%] xl:w-[40%] lg:w-[50%] px-4 mt-7">
+      <section className="w-[100%] md:w-[100%] xl:w-[40%] lg:w-[60%] px-4 mt-7">
         <div className="flex justify-between items-center">
           <div>
             <h1 className={`font-bold text-3xl text-blue-950`}>Hi, Sam</h1>
@@ -96,12 +133,12 @@ const Home = () => {
             </button>
           </div>
         </div>
-
+        {/* AD */}
         <div className="bg-white rounded-lg shadow-lg mt-6">
           <img
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVkaWNhbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
             alt=""
-            className="rounded-t-lg"
+            className="rounded-t-lg mx-auto"
           />
           <div className="p-6">
             <h2 className="font-bold mb-2 text-2xl text-orange-800">
@@ -112,17 +149,43 @@ const Home = () => {
             </p>
           </div>
         </div>
+        {/* Medical Specialties */}
+        <section>
+          <div className="flex justify-between items-center mt-10">
+            <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
+              Medical Specialties
+            </h1>
+          </div>
+          <div className="grid grid-cols-4 mt-5 gap-5">
+            {Specialties.map((card) => (
+              <div className="group cursor-pointer">
+                <div className="bg-white mx-auto flex justify-center w-20 h-20 p-2 items-center duration-300 transition shadow-xl  rounded-2xl group-hover:scale-110">
+                  <img src={card.img} alt="" className="" />
+                </div>
+                <p className="text-center  text-xs max-w-[3rem] md:max-w-none mx-auto font-semibold mt-2 text-gray-700 group-hover:text-orange-700">
+                  {card.title}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
         {/* Consultation */}
         <section>
           <div className="flex justify-between items-center mt-10">
-            <h1 className={`font-bold text-3xl text-blue-950`}>
-              Your Consultations
+            <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
+              Active Consultations
             </h1>
+            <Link
+              to="/schedule"
+              className="text-orange-500 text-sm font-semibold cursor-pointer"
+            >
+              See More
+            </Link>
           </div>
 
           <Link
             to={`/doctor/consultation/1`}
-            class="bg-white rounded-lg border border-orange-400 flex my-6"
+            class="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
           >
             <img src={docImage2} alt="Laptop on Desk" class="w-1/3 " />
             <div class="flex flex-col flex-1 pt-2">
@@ -173,8 +236,10 @@ const Home = () => {
         {/* What we do */}
         <section>
           <div className="flex justify-between items-center mt-10">
-            <h1 className={`font-bold text-3xl text-blue-950`}>Our Services</h1>
-            <p className="text-orange-600 font-semibold cursor-pointer">
+            <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
+              Our Services
+            </h1>
+            <p className="text-orange-500 text-sm font-semibold cursor-pointer">
               See More
             </p>
           </div>
@@ -191,15 +256,16 @@ const Home = () => {
             ))}
           </div>
         </section>
+
         {/* Meet Doctors */}
         <section>
           <div className="flex justify-between items-center mt-10">
-            <h1 className={`font-bold text-3xl text-blue-950`}>
+            <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
               Meet Our Doctors
             </h1>
             <Link
               to="/doctors"
-              className="text-orange-600 font-semibold cursor-pointer"
+              className="text-orange-500 text-sm font-semibold cursor-pointer"
             >
               See More
             </Link>

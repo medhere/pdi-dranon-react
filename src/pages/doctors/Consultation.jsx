@@ -18,7 +18,7 @@ const Consultation = () => {
   const iconStyle = { width: rem(12), height: rem(12) };
   return (
     <>
-      <section className="w-[100%] md:w-[70%]  lg:w-[50%] xl:w-[40%] no-scrollbar">
+      <section className="w-[100%] md:w-[100%]  lg:w-[60%] xl:w-[40%] no-scrollbar">
         <div class=" bg-white  overflow-hidden ">
           <div class="bg-cover h-32 bg-orange-100"></div>
           <div class=" px-4 pb-6">

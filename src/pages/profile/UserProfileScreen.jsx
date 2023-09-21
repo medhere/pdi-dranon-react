@@ -19,7 +19,7 @@ const UserProfileScreen = () => {
   return (
     <>
       <div class="w-full h-[200px] flex justify-between px-10 items-center bg-[#f18952]">
-        <div class="w-[95%] md:w-[70%] sm:w-[70%] lg:w-[50%] xl:w-[40%] flex justify-between mx-auto">
+        <div class="w-[100%] md:w-[100%] sm:w-[70%] lg:w-[60%] xl:w-[40%] flex justify-between mx-auto">
           <BiChevronLeftCircle
             className="cursor-pointer"
             size={25}
@@ -51,7 +51,7 @@ const UserProfileScreen = () => {
           </Menu>
         </div>
       </div>
-      <div class="w-[95%] md:w-[70%] sm:w-[70%] lg:w-[50%] xl:w-[40%]">
+      <div class="w-[100%] md:w-[100%] sm:w-[70%] lg:w-[60%] xl:w-[40%]">
         <div class="">
           <div class="flex flex-col items-center -mt-20">
             <Avatar

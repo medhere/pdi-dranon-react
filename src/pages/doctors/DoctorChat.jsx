@@ -7,10 +7,10 @@ const DoctorChat = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="w-[95%] md:w-[70%]  lg:w-[50%] xl:w-[40%] no-scrollbar">
+      <section className="w-[100%] md:w-[100%]  lg:w-[60%] xl:w-[40%] no-scrollbar">
         <section className="flex flex-col min-h-screen no-scrollbar">
           <div className="flex-1">
-            <div className="block fixed inset-x-0 z-10  md:w-[70%]  lg:w-[50%] xl:w-[40%] mx-auto">
+            <div className="block fixed inset-x-0 z-10  md:w-[100%]  lg:w-[60%] xl:w-[40%] mx-auto">
               <div className="py-6 flex bg-white justify-between items-center">
                 <IconCircleChevronLeft
                   size={28}
@@ -124,7 +124,7 @@ const DoctorChat = () => {
             </section>
           </div>
           {/* CHAT INPUT*/}
-          <div class="block fixed inset-x-0 bottom-0 z-10 mb-[55px] w-full justify-between md:w-[70%]  lg:w-[50%] xl:w-[40%] mx-auto">
+          <div class="block fixed inset-x-0 bottom-0 z-10 mb-[55px] w-full justify-between md:w-[100%]  lg:w-[60%] xl:w-[40%] mx-auto">
             <form className="flex-1">
               <label for="chat" class="sr-only">
                 Your message

@@ -73,3 +73,7 @@
   background-size: 130%;
   background-position: center;
 }
+
+.text-wrap {
+  text-wrap: balance;
+}
