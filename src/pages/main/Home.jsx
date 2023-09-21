@@ -120,7 +120,10 @@ const Home = () => {
             </h1>
           </div>
 
-          <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+          <Link
+            to={`/doctor/consultation/1`}
+            class="bg-white rounded-lg border border-orange-400 flex my-6"
+          >
             <img src={docImage2} alt="Laptop on Desk" class="w-1/3 " />
             <div class="flex flex-col flex-1 pt-2">
               <div className="flex-1  px-5 flex flex-col justify-center">
@@ -140,9 +143,12 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div class="bg-white rounded-lg border border-orange-400 flex my-6">
+          <Link
+            to={`/doctor/consultation/2`}
+            class="bg-white rounded-lg border border-orange-400 flex my-6"
+          >
             <img src={docImage} alt="Laptop on Desk" class="w-1/3 " />
             <div class="flex flex-col flex-1 pt-2">
               <div className="flex-1 flex px-5  flex-col justify-center">
@@ -162,7 +168,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </section>
         {/* What we do */}
         <section>

@@ -28,8 +28,8 @@ const AppLayout = () => {
                 Home
               </span>
             </Link>
-            <a
-              href="#"
+            <Link
+              to="/schedule"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${
                 pathname.includes("/schedule") && "text-[#f18952] bg-white"
               }`}
@@ -38,7 +38,7 @@ const AppLayout = () => {
               <span className="tab tab-kategori block text-xs font-semibold">
                 Schedule
               </span>
-            </a>
+            </Link>
             <Link
               to="/doctors"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${
@@ -53,7 +53,7 @@ const AppLayout = () => {
             <Link
               to="/profile"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${
-                pathname.includes("/profile") && "text-[#f18952] bg-white"
+                pathname.includes("profile") && "text-[#f18952] bg-white"
               }`}
             >
               <AiOutlineUser size={26} className="mx-auto mb-1" />

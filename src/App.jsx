@@ -29,6 +29,8 @@ import Home from "./pages/main/Home";
 import AppLayout from "./layout/AppLayout";
 import Doctors from "./pages/doctors/Doctors";
 import DoctorChat from "./pages/doctors/DoctorChat";
+import Schedule from "./pages/schedule/Schedule";
+import Consultation from "./pages/doctors/Consultation";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -88,9 +90,14 @@ export default function App() {
                     ></Route>
                     <Route path="/settings" element={<Settings />}></Route>
                     <Route path="/doctors" element={<Doctors />}></Route>
+                    <Route path="/schedule" element={<Schedule />}></Route>
                     <Route
                       path="/doctor/chat/:id"
                       element={<DoctorChat />}
+                    ></Route>
+                    <Route
+                      path="/doctor/consultation/:id"
+                      element={<Consultation />}
                     ></Route>
                   </Route>
                   {/* ERROR PAGES */}
