@@ -13,12 +13,12 @@ const Doctors = () => {
         <div className="flex justify-between items-center">
           <div>
             <h1 className={`font-bold text-3xl text-blue-950`}>
-              Speak to a Doctor
+              Speak to a Specialist
             </h1>
           </div>
         </div>
         <section>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num, i) => (
+          {[1, 2, 3, 4].map((num, i) => (
             <div
               key={i}
               class="bg-white rounded-lg border border-orange-400 flex my-6"
@@ -71,6 +71,7 @@ const Doctors = () => {
             </div>
           ))}
         </section>
+        <div className="h-40" />
       </section>
     </>
   );

@@ -163,7 +163,7 @@ const Home = () => {
             </h2>
             <div class="lg:mt-0 lg:flex-shrink-0 flex justify-end">
               <div class=" inline-flex justify-end rounded-md shadow">
-                <Link to={`/doctor/chat/1`}>
+                <Link to={`/fetch-doctor`}>
                   <button
                     type="button"
                     class="py-2 px-6  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
@@ -287,7 +287,7 @@ const Home = () => {
         <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
-              Meet Our Doctors
+              Meet Our Specialist
             </h1>
             <Link
               to="/doctors"
@@ -342,7 +342,7 @@ const Home = () => {
                 <h2 class="font-bold text-xl md:text-3xl text-orange-700">
                   Dr. John
                 </h2>
-                <p class="text-orange-700">surgeon</p>
+                <p class="text-orange-700">Dermatologist</p>
                 <div className="flex items-center space-x-2 my-2">
                   <AiFillPhone className="text-orange-900" />
                   <p className="text-xs text-orange-700">+234-567-89012</p>

@@ -2,11 +2,13 @@ import { Divider } from "@mantine/core";
 import { IconCircleChevronLeft, IconClipboardData } from "@tabler/icons-react";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const DoctorChat = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const history = useLocation();
+  console.log(history);
 
   useEffect(() => {
     setTimeout(() => {
@@ -15,7 +17,7 @@ const DoctorChat = () => {
   }, []);
   return (
     <>
-      {loading ? (
+      {false ? (
         <>
           <section class="bg-orange-900 relative place-items-center grid h-screen w-screen gap-4">
             <div class="bg-orange-500 w-48 h-48  absolute animate-ping rounded-full delay-5s shadow-xl"></div>

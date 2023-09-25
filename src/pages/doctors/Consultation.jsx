@@ -14,7 +14,7 @@ import {
 import { IconTestPipeOff } from "@tabler/icons-react";
 import docImage from "../../assets/images/doc4.jpg";
 import { IconCircleChevronLeft } from "@tabler/icons-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Consultation = () => {
   const iconStyle = { width: rem(12), height: rem(12) };
@@ -46,16 +46,20 @@ const Consultation = () => {
             </div>
             <div class="flex space-x-4">
               <MainButton>
-                <div className="flex justify-center items-center">
-                  Message
-                  <MdEmail className="text-orange-900 ml-2" />
-                </div>
+                <Link to={`/doctor/chat/1`}>
+                  <div className="flex justify-center items-center">
+                    Message
+                    <MdEmail className="text-orange-900 ml-2" />
+                  </div>
+                </Link>
               </MainButton>
               <MainButton>
-                <div className="flex justify-center items-center space-x-5">
-                  Call
-                  <AiFillPhone className="text-orange-900 ml-2" />
-                </div>
+                <Link>
+                  <div className="flex justify-center items-center space-x-5">
+                    Call
+                    <AiFillPhone className="text-orange-900 ml-2" />
+                  </div>
+                </Link>
               </MainButton>
             </div>
           </div>

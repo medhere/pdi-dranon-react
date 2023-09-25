@@ -31,6 +31,7 @@ import Doctors from "./pages/doctors/Doctors";
 import DoctorChat from "./pages/doctors/DoctorChat";
 import Schedule from "./pages/schedule/Schedule";
 import Consultation from "./pages/doctors/Consultation";
+import Loader from "./components/webComponent/Loader";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -99,6 +100,7 @@ export default function App() {
                       path="/doctor/consultation/:id"
                       element={<Consultation />}
                     ></Route>
+                    <Route path="/fetch-doctor" element={<Loader />}></Route>
                   </Route>
                   {/* ERROR PAGES */}
                   <Route path="*" element={<>No route found</>}></Route>
