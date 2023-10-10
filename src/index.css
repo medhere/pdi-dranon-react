@@ -84,3 +84,6 @@
 .patient-bubble {
   @apply bg-green-100 ml-auto w-3/4 mx-4 mb-2 p-2 rounded-lg;
 }
+.inputStyle {
+  @apply bg-[#f5f5f5] text-gray-900 font-medium text-lg rounded-lg block w-full pl-14 p-2.5 outline-none border;
+}

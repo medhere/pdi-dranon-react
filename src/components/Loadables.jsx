@@ -34,7 +34,6 @@ export default function Loadables({ children }) {
   );
 }
 
-
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -43,48 +42,47 @@ function ScrollToTop() {
   return null;
 }
 
-
 function AxiousLoadingUI({ children }) {
-  const [axiosState, setAxiosState] = useState(false)
-  const [loadingtext, setLoadingtext] = useState('Please Wait...')
-  const signOut = useSignOut()
+  const [axiosState, setAxiosState] = useState(false);
+  const [loadingtext, setLoadingtext] = useState("Please Wait...");
+  const signOut = useSignOut();
 
   axios.interceptors.request.use(
     (req) => {
-      setAxiosState(true)
-      setLoadingtext('Please Wait...')
+      setAxiosState(true);
+      setLoadingtext("Please Wait...");
       return req;
     },
     (err) => {
-      setAxiosState(false)
-      setLoadingtext('Please Wait...')
-      return Promise.reject(err)
+      setAxiosState(false);
+      setLoadingtext("Please Wait...");
+      return Promise.reject(err);
     }
   );
 
   axios.interceptors.response.use(
     (res) => {
-      setAxiosState(false)
-      setLoadingtext('Please Wait...')      
+      setAxiosState(false);
+      setLoadingtext("Please Wait...");
       return res;
     },
     (err) => {
-      setAxiosState(false)
-      setLoadingtext('Server Error! Reload Page')
-      if(err.response.status === 401) signOut()
-      
-      return Promise.reject(err)
+      setAxiosState(false);
+      setLoadingtext("Server Error! Reload Page");
+      if (err.response.status === 401) signOut();
+
+      return Promise.reject(err);
     }
   );
 
   return (
     <IonLoading
-      spinner='lines-sharp'
+      spinner="lines-sharp"
       // translucent={true}
       isOpen={axiosState}
       // onDidDismiss={() => setAxiosState(false)}
       message={loadingtext}
-    // duration={10000}
+      // duration={10000}
     />
-  )
+  );
 }

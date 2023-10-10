@@ -1,0 +1,24 @@
+AUTH
+https://test.elkrisserver.com/
+
+POST: api/auth/register : 
+['fullName, 'phone', 'email', 'gender', 'state', 'dateOfBirth', 'password']
+
+POST: api/auth/verify/otp
+['email']
+
+GET: api/auth/resend-otp    {within auth}
+
+POST: api/auth/login: 
+['email', 'password']
+
+POST: api/auth/changePassword
+['id', 'oldPassword', 'newPassword', 'newPassword_confirmation']
+
+POST: api/auth/forgot-password
+['email']
+
+GET: api/auth/reset-password/{token}
+
+POST: api/auth/reset-password
+['email', 'password', 'password_confirmation', 'token']
