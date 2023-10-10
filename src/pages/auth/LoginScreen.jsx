@@ -8,8 +8,13 @@ import MainInput from "../../components/webComponent/MainInput";
 import { Link } from "react-router-dom";
 import { XHR } from "../../libs/request";
 import { useForm } from "react-hook-form";
+import { MdEmail } from "react-icons/md";
 const LoginScreen = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -26,34 +31,49 @@ const LoginScreen = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div class="relative mb-6 ">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-              <BiSolidUserPlus size={28} className="text-gray-500" />
+          <div className=" mb-4 ">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                <MdEmail size={28} className="text-gray-500" />
+              </div>
+              <input
+                className={`inputStyle ${errors?.email && "border-red-500"}`}
+                placeholder="Email"
+                {...register("email", {
+                  required: "Email is required",
+                })}
+              />
             </div>
-            <input
-              type="email"
-              placeholder="Email"
-              className={`bg-[#f5f5f5] text-gray-900 font-medium text-lg rounded-lg block w-full pl-14 p-2.5`}
-              id="email"
-              {...register("email", {
-                required: "Email Address is required!",
-              })}
-            />
+            {errors?.email && (
+              <p className="text-[10px] mt-1 font-semibold text-red-500">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
-          <div class="relative mb-6 ">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-              <BiSolidLockOpen size={28} className="text-gray-500" />
+          <div className="mb-4">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                <BiSolidLockOpen size={28} className="text-gray-500" />
+              </div>
+              <input
+                className={`inputStyle ${errors?.password && "border-red-500"}`}
+                placeholder="Password"
+                type="password"
+                {...register("password", {
+                  required: "Password is required!",
+                  minLength: {
+                    value: 5,
+                    message: "Password should be at least 5 characters",
+                  },
+                })}
+              />
             </div>
-            <input
-              type="password"
-              placeholder="Password"
-              className={`bg-[#f5f5f5] text-gray-900 font-medium text-lg rounded-lg block w-full pl-14 p-2.5`}
-              id="password"
-              {...register("password", {
-                required: "Password is required!",
-              })}
-            />
+            {errors?.password && (
+              <p className="text-[10px] mt-1 font-semibold text-red-500">
+                {errors.password.message}
+              </p>
+            )}
           </div>
           <div>
             <Link

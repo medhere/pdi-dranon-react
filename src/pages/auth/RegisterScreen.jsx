@@ -115,14 +115,26 @@ const RegisterScreen = () => {
               <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <MdLocationOn size={28} className="text-gray-500" />
               </div>
-              <input
+              <select
                 className={`inputStyle ${errors?.location && "border-red-500"}`}
                 placeholder="Location"
                 type="text"
                 {...register("location", {
                   required: "location is required",
                 })}
-              />
+              >
+                <option
+                  value=""
+                  disabled
+                  selected
+                  className="text-gray-600"
+                  las
+                >
+                  Select Location
+                </option>
+                <option value="abuja">Abuja</option>
+                <option value="lagos">Lagos</option>
+              </select>
             </div>
             {errors?.location && (
               <p className="text-[10px] mt-1 font-semibold text-red-500">
@@ -159,14 +171,26 @@ const RegisterScreen = () => {
               <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <IconGenderBigender size={28} className="text-gray-500" />
               </div>
-              <input
+              <select
                 className={`inputStyle ${errors?.gender && "border-red-500"}`}
                 placeholder="Gender"
                 type="Text"
                 {...register("gender", {
                   required: "Gender is required",
                 })}
-              />
+              >
+                <option
+                  value=""
+                  disabled
+                  selected
+                  className="text-gray-600"
+                  las
+                >
+                  Select Gender
+                </option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
             </div>
             {errors?.gender && (
               <p className="text-[10px] mt-1 font-semibold text-red-500">

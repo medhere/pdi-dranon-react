@@ -10,8 +10,8 @@ import { Provider } from "react-redux";
 import { Notifications } from "./components/Notifications";
 import { AuthProvider, RequireAuth } from "react-auth-kit";
 import { lazily } from "react-lazily";
-import { store } from "./stores/reduxStore";
-import OTP from "./pages/auth/OTP";
+import { store, persistedStore } from "./stores/reduxStore";
+import { PersistGate } from "redux-persist/integration/react";
 import SplashScreen from "./pages/splash/SplashScreen";
 import LoginScreen from "./pages/auth/LoginScreen";
 import RegisterScreen from "./pages/auth/RegisterScreen";
@@ -29,6 +29,7 @@ import DoctorChat from "./pages/doctors/DoctorChat";
 import Schedule from "./pages/schedule/Schedule";
 import Consultation from "./pages/doctors/Consultation";
 import Loader from "./components/webComponent/Loader";
+import CheckAuth from "./layout/CheckAuth";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -45,6 +46,7 @@ setupIonicReact({
 export default function App() {
   return (
     <Provider store={store}>
+      {/* <PersistGate persistor={persistedStore}> */}
       <IonApp>
         <IonContent>
           <AuthProvider
@@ -72,32 +74,33 @@ export default function App() {
                       path="reset-password"
                       element={<ResetPasswordScreen />}
                     ></Route>
-                    <Route path="otp" element={<OTP />}></Route>
                   </Route>
                   {/* MAIN Pages */}
-                  <Route element={<AppLayout />}>
-                    <Route path="/home" element={<Home />}></Route>
-                    {/* PROFILE PAGES */}
-                    <Route
-                      path="/profile"
-                      element={<UserProfileScreen />}
-                    ></Route>
-                    <Route
-                      path="/edit-profile"
-                      element={<EditProfile />}
-                    ></Route>
-                    <Route path="/settings" element={<Settings />}></Route>
-                    <Route path="/doctors" element={<Doctors />}></Route>
-                    <Route path="/schedule" element={<Schedule />}></Route>
-                    <Route
-                      path="/doctor/chat/:id"
-                      element={<DoctorChat />}
-                    ></Route>
-                    <Route
-                      path="/doctor/consultation/:id"
-                      element={<Consultation />}
-                    ></Route>
-                    <Route path="/fetch-doctor" element={<Loader />}></Route>
+                  <Route element={<CheckAuth />}>
+                    <Route element={<AppLayout />}>
+                      <Route path="/home" element={<Home />}></Route>
+                      {/* PROFILE PAGES */}
+                      <Route
+                        path="/profile"
+                        element={<UserProfileScreen />}
+                      ></Route>
+                      <Route
+                        path="/edit-profile"
+                        element={<EditProfile />}
+                      ></Route>
+                      <Route path="/settings" element={<Settings />}></Route>
+                      <Route path="/doctors" element={<Doctors />}></Route>
+                      <Route path="/schedule" element={<Schedule />}></Route>
+                      <Route
+                        path="/doctor/chat/:id"
+                        element={<DoctorChat />}
+                      ></Route>
+                      <Route
+                        path="/doctor/consultation/:id"
+                        element={<Consultation />}
+                      ></Route>
+                      <Route path="/fetch-doctor" element={<Loader />}></Route>
+                    </Route>
                   </Route>
                   {/* ERROR PAGES */}
                   <Route path="*" element={<>No route found</>}></Route>
@@ -107,6 +110,7 @@ export default function App() {
           </AuthProvider>
         </IonContent>
       </IonApp>
+      {/* </PersistGate> */}
     </Provider>
   );
 }
