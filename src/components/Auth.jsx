@@ -1,51 +1,58 @@
-import { useSignIn, useSignOut, useAuthUser, useAuthHeader, useIsAuthenticated, RequireAuth, } from "react-auth-kit";
+import {
+  useSignIn,
+  useSignOut,
+  useAuthUser,
+  useAuthHeader,
+  useIsAuthenticated,
+  RequireAuth,
+} from "react-auth-kit";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
-export const Authenticate = ({acceptRoles}) => {
+export const Authenticate = ({ acceptRoles }) => {
   const authUser = useAuthUser();
 
-  const auth = <RequireAuth loginPath={"/signin"}><Outlet /></RequireAuth>
+  const auth = (
+    <RequireAuth loginPath={"/auth/login"}>
+      <Outlet />
+    </RequireAuth>
+  );
 
-  if(acceptRoles === undefined) return auth
-  if(acceptRoles !== undefined && acceptRoles.includes(authUser()?.role)) {
-    return auth
+  if (acceptRoles === undefined) return auth;
+  if (acceptRoles !== undefined && acceptRoles.includes(authUser()?.role)) {
+    return auth;
+  } else {
+    return <Navigate to={"/auth/login"} />;
   }
-  else {
-    return <Navigate to={'/signin'}/>  
-  }
+};
+{
+  /* <Authenticate acceptRoles={['admin','user']} /> */
 }
-{/* <Authenticate acceptRoles={['admin','user']} /> */}
 
-
-export const AllowRoles = ({acceptRoles, children}) => {
+export const AllowRoles = ({ acceptRoles, children }) => {
   const authUser = useAuthUser();
 
-  const component = <>{children}</>
+  const component = <>{children}</>;
 
-  if(acceptRoles === undefined) return component
-  if(acceptRoles !== undefined && acceptRoles.includes(componentUser()?.role)) return auth
-
-}
+  if (acceptRoles === undefined) return component;
+  if (acceptRoles !== undefined && acceptRoles.includes(componentUser()?.role))
+    return auth;
+};
 
 export const Signin = () => {
   const signIn = useSignIn();
-  const nav = useNavigate()
-  
-  function sign(){
+  const nav = useNavigate();
+
+  function sign() {
     signIn({
-      token: '1234567890', //string	The Authentication token (JWT) to be stored from server
-      expiresIn: '10', //number	The time for which the auth token will last, in minutes
+      token: "1234567890", //string	The Authentication token (JWT) to be stored from server
+      expiresIn: "10", //number	The time for which the auth token will last, in minutes
       tokenType: "Bearer", //string | 'Bearer'	The type of authentication token.
-      authState: {name:'mike', role:'admin'}, //object (optional)	State of the authorized user. Eg: {name: Jhon, email: jhon@auth.com}
-    }) && nav('/secure')  
+      authState: { name: "mike", role: "admin" }, //object (optional)	State of the authorized user. Eg: {name: Jhon, email: jhon@auth.com}
+    }) && nav("/secure");
   }
-  
-  return (
-    <button onClick={sign}>
-      Login
-    </button>
-  )
-}
+
+  return <button onClick={sign}>Login</button>;
+};
 
 export const Signout = () => {
   const signOut = useSignOut();

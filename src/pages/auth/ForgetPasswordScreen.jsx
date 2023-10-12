@@ -10,6 +10,8 @@ import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { XHR } from "../../libs/request";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { toastStyle } from "../../libs/utils";
 
 const ForgetPasswordScreen = () => {
   const {
@@ -22,7 +24,10 @@ const ForgetPasswordScreen = () => {
     console.log(data);
     await XHR("post", "api/auth/forgot-password", data)
       .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error(err?.message, toastStyle);
+      });
   };
   return (
     <body className="h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col justify-center items-center">

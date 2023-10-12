@@ -5,11 +5,18 @@ import { TextInput } from "@mantine/core";
 import { BiSolidLockOpen, BiSolidUserPlus } from "react-icons/bi";
 import MainButton from "../../components/webComponent/MainButton";
 import MainInput from "../../components/webComponent/MainInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { XHR } from "../../libs/request";
 import { useForm } from "react-hook-form";
 import { MdEmail } from "react-icons/md";
+import { toast } from "react-hot-toast";
+import { toastStyle } from "../../libs/utils";
+import { useSignIn } from "react-auth-kit";
+
 const LoginScreen = () => {
+  const signIn = useSignIn();
+  const nav = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -19,8 +26,21 @@ const LoginScreen = () => {
   const onSubmit = async (data) => {
     console.log(data);
     await XHR("post", "api/auth/login", data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res);
+
+        signIn({
+          token: res?.data.token, //string	The Authentication token (JWT) to be stored from server
+          expiresIn: 60 * 24 * 30, //number	The time for which the auth token will last, in minutes
+          tokenType: "Bearer", //string | 'Bearer'	The type of authentication token.
+          authState: res?.data.user, //object (optional)	State of the authorized user. Eg: {name: Jhon, email: jhon@auth.com}
+        });
+        nav("/home");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err?.response?.data?.message, toastStyle);
+      });
   };
   return (
     <body className="h-screen SubBg w-screen bg-[#f6e0ce] flex flex-col justify-center items-center">

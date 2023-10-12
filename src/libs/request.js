@@ -83,7 +83,7 @@ export const XHR = async (
     headers: { Authorization: auth ? `Bearer ${auth}` : undefined },
     params: method === "get" ? userdata : undefined,
     data: method !== "get" ? userdata : undefined,
-    withCredentials: true,
+    // withCredentials: true,
     ...config,
   });
 };

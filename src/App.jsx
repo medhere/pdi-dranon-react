@@ -30,6 +30,9 @@ import Schedule from "./pages/schedule/Schedule";
 import Consultation from "./pages/doctors/Consultation";
 import Loader from "./components/webComponent/Loader";
 import CheckAuth from "./layout/CheckAuth";
+import { Toaster } from "react-hot-toast";
+import { Authenticate } from "./components/Auth";
+import { Logout } from "./pages/auth/Logout";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -45,72 +48,83 @@ setupIonicReact({
 
 export default function App() {
   return (
-    <Provider store={store}>
-      {/* <PersistGate persistor={persistedStore}> */}
-      <IonApp>
-        <IonContent>
-          <AuthProvider
-            authType="localstorage" //cookie
-            authName="auth"
-            // cookieDomain={window.location.hostname}
-            // cookieSecure={window.location.protocol === "https:"}
-          >
-            <Router>
-              <Loadables>
-                <Notifications />
-                <Routes>
-                  <Route path="/" element={<SplashScreen />}></Route>
-                  {/* AUTHENTICATION */}
-                  <Route path="auth">
-                    <Route path="login" element={<LoginScreen />}></Route>
-                    <Route path="register" element={<RegisterScreen />}></Route>
-                    <Route path="verify" element={<VerifyScreen />}></Route>
-                    <Route path="verify-otp" element={<OTPScreen />}></Route>
-                    <Route
-                      path="forget-password"
-                      element={<ForgetPasswordScreen />}
-                    ></Route>
-                    <Route
-                      path="reset-password"
-                      element={<ResetPasswordScreen />}
-                    ></Route>
-                  </Route>
-                  {/* MAIN Pages */}
-                  <Route element={<CheckAuth />}>
-                    <Route element={<AppLayout />}>
-                      <Route path="/home" element={<Home />}></Route>
-                      {/* PROFILE PAGES */}
+    <>
+      <Provider store={store}>
+        {/* <PersistGate persistor={persistedStore}> */}
+        <Toaster />
+        <IonApp>
+          <IonContent>
+            <AuthProvider
+              authType="localstorage" //cookie
+              authName="auth"
+              // cookieDomain={window.location.hostname}
+              // cookieSecure={window.location.protocol === "https:"}
+            >
+              <Router>
+                <Loadables>
+                  <Notifications />
+                  <Routes>
+                    <Route path="/" element={<SplashScreen />}></Route>
+                    {/* AUTHENTICATION */}
+                    <Route path="auth">
+                      <Route path="login" element={<LoginScreen />}></Route>
+                      <Route path="logout" element={<Logout />}></Route>
                       <Route
-                        path="/profile"
-                        element={<UserProfileScreen />}
+                        path="register"
+                        element={<RegisterScreen />}
+                      ></Route>
+                      <Route path="verify" element={<VerifyScreen />}></Route>
+                      <Route path="verify-otp" element={<OTPScreen />}></Route>
+                      <Route
+                        path="forget-password"
+                        element={<ForgetPasswordScreen />}
                       ></Route>
                       <Route
-                        path="/edit-profile"
-                        element={<EditProfile />}
+                        path="reset-password"
+                        element={<ResetPasswordScreen />}
                       ></Route>
-                      <Route path="/settings" element={<Settings />}></Route>
-                      <Route path="/doctors" element={<Doctors />}></Route>
-                      <Route path="/schedule" element={<Schedule />}></Route>
-                      <Route
-                        path="/doctor/chat/:id"
-                        element={<DoctorChat />}
-                      ></Route>
-                      <Route
-                        path="/doctor/consultation/:id"
-                        element={<Consultation />}
-                      ></Route>
-                      <Route path="/fetch-doctor" element={<Loader />}></Route>
                     </Route>
-                  </Route>
-                  {/* ERROR PAGES */}
-                  <Route path="*" element={<>No route found</>}></Route>
-                </Routes>
-              </Loadables>
-            </Router>
-          </AuthProvider>
-        </IonContent>
-      </IonApp>
-      {/* </PersistGate> */}
-    </Provider>
+                    {/* MAIN Pages */}
+
+                    <Route element={<Authenticate />}>
+                      <Route element={<AppLayout />}>
+                        <Route path="/home" element={<Home />}></Route>
+                        {/* PROFILE PAGES */}
+                        <Route
+                          path="/profile"
+                          element={<UserProfileScreen />}
+                        ></Route>
+                        <Route
+                          path="/edit-profile"
+                          element={<EditProfile />}
+                        ></Route>
+                        <Route path="/settings" element={<Settings />}></Route>
+                        <Route path="/doctors" element={<Doctors />}></Route>
+                        <Route path="/schedule" element={<Schedule />}></Route>
+                        <Route
+                          path="/doctor/chat/:id"
+                          element={<DoctorChat />}
+                        ></Route>
+                        <Route
+                          path="/doctor/consultation/:id"
+                          element={<Consultation />}
+                        ></Route>
+                        <Route
+                          path="/fetch-doctor"
+                          element={<Loader />}
+                        ></Route>
+                      </Route>
+                    </Route>
+                    {/* ERROR PAGES */}
+                    <Route path="*" element={<>No route found</>}></Route>
+                  </Routes>
+                </Loadables>
+              </Router>
+            </AuthProvider>
+          </IonContent>
+        </IonApp>
+        {/* </PersistGate> */}
+      </Provider>
+    </>
   );
 }

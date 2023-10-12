@@ -12,6 +12,9 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { IconGenderBigender } from "@tabler/icons-react";
 import { XHR } from "../../libs/request";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { toastStyle } from "../../libs/utils";
 
 const RegisterScreen = () => {
   const {
@@ -21,11 +24,12 @@ const RegisterScreen = () => {
     getValues,
   } = useForm({
     defaultValues: {
-      fullName: "",
+      firstName: "",
+      lastName: "",
       email: "",
       dateOfBirth: "",
       gender: "",
-      location: "",
+      state: "",
       password: "",
       phone: "",
       password_confirmation: "",
@@ -35,8 +39,14 @@ const RegisterScreen = () => {
   const onSubmit = async (data) => {
     console.log(data);
     await XHR("post", "api/auth/register", data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res);
+        toast.success(res?.response?.data?.message, toastStyle);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err?.response?.data?.message, toastStyle);
+      });
   };
   return (
     <body className="min-h-screen SubBg w-screen py-16 bg-[#f6e0ce] flex flex-col justify-center items-center">
@@ -46,27 +56,49 @@ const RegisterScreen = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4 ">
-            <div class="relative ">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                <BiSolidUserPlus size={28} className="text-gray-500" />
+          <div className="flex space-x-2 w-full">
+            <div className="mb-4 flex-1">
+              <div class="relative ">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <BiSolidUserPlus size={28} className="text-gray-500" />
+                </div>
+                <input
+                  id="firstName"
+                  className={`inputStyle ${
+                    errors?.firstName && "border border-red-500"
+                  }`}
+                  placeholder="First Name"
+                  {...register("firstName", {
+                    required: "First Name is required",
+                  })}
+                />
               </div>
-              <input
-                id="fullName"
-                className={`inputStyle ${
-                  errors?.fullName && "border border-red-500"
-                }`}
-                placeholder="Full Name"
-                {...register("fullName", {
-                  required: "Full name is required",
-                })}
-              />
+              {errors?.firstName && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.firstName.message}
+                </p>
+              )}
             </div>
-            {errors?.fullName && (
-              <p className="text-[10px] mt-1 font-semibold text-red-500">
-                {errors.fullName.message}
-              </p>
-            )}
+
+            <div className="mb-4 flex-1">
+              <div class="relative ">
+                <input
+                  id="lastName"
+                  className={`bg-[#f5f5f5] text-gray-900 font-medium text-lg rounded-lg block w-full pl-3 p-2.5 outline-none border ${
+                    errors?.lastName && "border border-red-500"
+                  }`}
+                  placeholder="Last Name"
+                  {...register("lastName", {
+                    required: "Last name is required",
+                  })}
+                />
+              </div>
+              {errors?.lastName && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.lastName.message}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className=" mb-4 ">
@@ -116,29 +148,23 @@ const RegisterScreen = () => {
                 <MdLocationOn size={28} className="text-gray-500" />
               </div>
               <select
-                className={`inputStyle ${errors?.location && "border-red-500"}`}
+                className={`inputStyle ${errors?.state && "border-red-500"}`}
                 placeholder="Location"
                 type="text"
-                {...register("location", {
-                  required: "location is required",
+                {...register("state", {
+                  required: "state is required",
                 })}
               >
-                <option
-                  value=""
-                  disabled
-                  selected
-                  className="text-gray-600"
-                  las
-                >
-                  Select Location
+                <option value="" disabled selected className="text-gray-600">
+                  Select State
                 </option>
-                <option value="abuja">Abuja</option>
-                <option value="lagos">Lagos</option>
+                <option value="Abuja">Abuja</option>
+                <option value="Lagos">Lagos</option>
               </select>
             </div>
-            {errors?.location && (
+            {errors?.state && (
               <p className="text-[10px] mt-1 font-semibold text-red-500">
-                {errors.location.message}
+                {errors.state.message}
               </p>
             )}
           </div>
