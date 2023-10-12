@@ -21,17 +21,17 @@ const Doctors = () => {
           {[1, 2, 3, 4].map((num, i) => (
             <div
               key={i}
-              class="bg-white rounded-lg border border-orange-400 flex my-6"
+              className="bg-white rounded-lg border border-orange-400 flex my-6"
             >
               <img
                 src={docImage}
                 alt="Laptop on Desk"
                 className="w-1/3 hidden sm:block"
               />
-              <div class="flex flex-col  pt-2 flex-1">
+              <div className="flex flex-col  pt-2 flex-1">
                 <div className="flex-1 px-5 flex flex-col justify-center">
                   <div className="flex justify-between items-center">
-                    <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                    <h2 className="font-bold text-xl md:text-3xl text-orange-700">
                       Dr. John
                     </h2>
                     <p
@@ -42,7 +42,7 @@ const Doctors = () => {
                       {num % 3 === 0 ? "Active" : "Inactive"}
                     </p>
                   </div>
-                  <p class="text-orange-700">surgeon</p>
+                  <p className="text-orange-700">surgeon</p>
                   <div className="flex items-center space-x-2 my-2">
                     <AiFillPhone className="text-orange-900" />
                     <p className="text-xs text-orange-700">+234-567-89012</p>

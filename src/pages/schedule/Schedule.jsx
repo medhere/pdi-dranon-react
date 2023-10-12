@@ -25,15 +25,15 @@ const Schedule = () => {
 
           <Link
             to={`/doctor/consultation/1`}
-            class="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
+            className="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
           >
-            <img src={docImage2} alt="Laptop on Desk" class="w-1/3 " />
-            <div class="flex flex-col flex-1 pt-2">
+            <img src={docImage2} alt="Laptop on Desk" className="w-1/3 " />
+            <div className="flex flex-col flex-1 pt-2">
               <div className="flex-1  px-5 flex flex-col justify-center">
-                <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                <h2 className="font-bold text-xl md:text-3xl text-orange-700">
                   Dr. Katie
                 </h2>
-                <p class="text-orange-700">surgeon</p>
+                <p className="text-orange-700">surgeon</p>
               </div>
               <div className="flex md:space-x-5 space-x-1 px-2 my-2">
                 <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
@@ -54,15 +54,15 @@ const Schedule = () => {
           </div>
           <Link
             to={`/doctor/consultation/2`}
-            class="bg-white rounded-lg border border-orange-400 flex my-6"
+            className="bg-white rounded-lg border border-orange-400 flex my-6"
           >
-            <img src={docImage} alt="Laptop on Desk" class="w-1/3 " />
-            <div class="flex flex-col flex-1 pt-2">
+            <img src={docImage} alt="Laptop on Desk" className="w-1/3 " />
+            <div className="flex flex-col flex-1 pt-2">
               <div className="flex-1 flex px-5  flex-col justify-center">
-                <h2 class="font-bold text-xl md:text-3xl text-orange-700">
+                <h2 className="font-bold text-xl md:text-3xl text-orange-700">
                   Dr. Komolafe
                 </h2>
-                <p class="text-orange-700">specialist</p>
+                <p className="text-orange-700">specialist</p>
               </div>
               <div className="flex md:space-x-5 space-x-1 px-2 my-2">
                 <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">

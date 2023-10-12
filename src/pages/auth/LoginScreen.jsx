@@ -37,6 +37,9 @@ const LoginScreen = () => {
         });
         nav("/home");
       })
+      .then(() => {
+        toast.success(`Welcome Back!`, toastStyle);
+      })
       .catch((err) => {
         console.log(err);
         toast.error(err?.response?.data?.message, toastStyle);
@@ -52,8 +55,8 @@ const LoginScreen = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className=" mb-4 ">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <MdEmail size={28} className="text-gray-500" />
               </div>
               <input
@@ -72,8 +75,8 @@ const LoginScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <BiSolidLockOpen size={28} className="text-gray-500" />
               </div>
               <input

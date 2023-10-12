@@ -22,8 +22,8 @@ const Consultation = () => {
   return (
     <>
       <section className="w-[100%] md:w-[100%]  lg:w-[60%] xl:w-[40%] no-scrollbar">
-        <div class=" bg-white  overflow-hidden ">
-          <div class="bg-cover h-32 bg-orange-100">
+        <div className=" bg-white  overflow-hidden ">
+          <div className="bg-cover h-32 bg-orange-100">
             <div className="flex items-center p-4">
               <IconCircleChevronLeft
                 size={28}
@@ -32,19 +32,19 @@ const Consultation = () => {
               />
             </div>
           </div>
-          <div class=" px-4 pb-6">
-            <div class="text-center sm:text-left sm:flex mb-4">
+          <div className=" px-4 pb-6">
+            <div className="text-center sm:text-left sm:flex mb-4">
               <img
-                class="h-32 w-32 rounded-full border-4 border-white -mt-16 mr-4"
+                className="h-32 w-32 rounded-full border-4 border-white -mt-16 mr-4"
                 src={docImage}
                 alt=""
               />
-              <div class="py-2">
-                <h3 class="font-bold text-2xl mb-1">Dr John</h3>
+              <div className="py-2">
+                <h3 className="font-bold text-2xl mb-1">Dr John</h3>
                 <p>Specialist</p>
               </div>
             </div>
-            <div class="flex space-x-4">
+            <div className="flex space-x-4">
               <MainButton>
                 <Link to={`/doctor/chat/1`}>
                   <div className="flex justify-center items-center">

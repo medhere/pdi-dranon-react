@@ -39,7 +39,7 @@ const VerifyScreen = () => {
             /> */}
             <select
               id="countries_disabled"
-              class="bg-[#f5f5f5]  text-gray-900 text-sm rounded-lg outline-none block w-full p-2.5 basis-2/6 py-4"
+              className="bg-[#f5f5f5]  text-gray-900 text-sm rounded-lg outline-none block w-full p-2.5 basis-2/6 py-4"
             >
               <option selected>+234</option>
               <option value="+234">+234</option>
@@ -47,7 +47,7 @@ const VerifyScreen = () => {
               <option value="+234">+234</option>
               <option value="+234">+234</option>
             </select>
-            <div class="relative">
+            <div className="relative">
               <MainInput />
             </div>
           </div>

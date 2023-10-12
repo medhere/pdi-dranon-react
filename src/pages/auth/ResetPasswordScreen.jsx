@@ -24,23 +24,23 @@ const ResetPasswordScreen = () => {
         </div>
         {/* <MainHeader text="Reset Password" classes="mb-10" /> */}
         <form action="" className="mt-10">
-          <label for="countries_disabled" class="block font-bold text-lg ">
+          <label for="countries_disabled" className="block font-bold text-lg ">
             Enter new Password
           </label>
-          <div class="relative mb-6 ">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+          <div className="relative mb-6 ">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
               <BiSolidLockOpen size={28} className="text-gray-500" />
             </div>
             <MainInput placeholder="Password" type="password" />
           </div>
           <label
             for="countries_disabled"
-            class="block mb-2  font-bold text-lg "
+            className="block mb-2  font-bold text-lg "
           >
             Confirm Password
           </label>
-          <div class="relative mb-6 ">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+          <div className="relative mb-6 ">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
               <BiSolidLockOpen size={28} className="text-gray-500" />
             </div>
             <MainInput placeholder="Password" type="password" />

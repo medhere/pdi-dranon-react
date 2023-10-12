@@ -38,8 +38,8 @@ const ForgetPasswordScreen = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className=" mb-4 ">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <MdEmail size={28} className="text-gray-500" />
               </div>
               <input

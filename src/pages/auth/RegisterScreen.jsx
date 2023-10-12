@@ -58,8 +58,8 @@ const RegisterScreen = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex space-x-2 w-full">
             <div className="mb-4 flex-1">
-              <div class="relative ">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+              <div className="relative ">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                   <BiSolidUserPlus size={28} className="text-gray-500" />
                 </div>
                 <input
@@ -81,7 +81,7 @@ const RegisterScreen = () => {
             </div>
 
             <div className="mb-4 flex-1">
-              <div class="relative ">
+              <div className="relative ">
                 <input
                   id="lastName"
                   className={`bg-[#f5f5f5] text-gray-900 font-medium text-lg rounded-lg block w-full pl-3 p-2.5 outline-none border ${
@@ -102,8 +102,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className=" mb-4 ">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <MdEmail size={28} className="text-gray-500" />
               </div>
               <input
@@ -122,8 +122,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <BsFillTelephoneFill size={28} className="text-gray-500" />
               </div>
               <input
@@ -143,8 +143,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative ">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative ">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <MdLocationOn size={28} className="text-gray-500" />
               </div>
               <select
@@ -170,8 +170,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <BsFillCalendarCheckFill size={28} className="text-gray-500" />
               </div>
               <input
@@ -193,8 +193,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <IconGenderBigender size={28} className="text-gray-500" />
               </div>
               <select
@@ -226,8 +226,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <BiSolidLockOpen size={28} className="text-gray-500" />
               </div>
               <input
@@ -251,8 +251,8 @@ const RegisterScreen = () => {
           </div>
 
           <div className="mb-4">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                 <BiSolidLockOpen size={28} className="text-gray-500" />
               </div>
               <input

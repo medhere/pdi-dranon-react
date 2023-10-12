@@ -31,33 +31,48 @@ const EditProfile = () => {
           </Avatar>
 
           <form action="">
-            <div class="mb-6 mt-2">
+            <div className="mb-6 mt-2">
               <label className="font-bold text-lg">Full Name</label>
-              <MainInput style=" pl-2 font-medium" value="Harry Marguire" />
+              <MainInput
+                className="inputStyle pl-2 font-medium"
+                value="Harry Marguire"
+              />
             </div>
 
-            <div class="mb-6 mt-2">
+            <div className="mb-6 mt-2">
               <label className="font-bold text-lg">Email</label>
-              <MainInput style=" pl-2 font-medium" value="Harry@Marguire.com" />
+              <MainInput
+                className="inputStyle pl-2 font-medium"
+                value="Harry@Marguire.com"
+              />
             </div>
 
-            <div class="mb-6 mt-2">
+            <div className="mb-6 mt-2">
               <label className="font-bold text-lg">Date of Birth</label>
-              <MainInput style=" pl-2 font-medium" value="21/22/1992" />
+              <MainInput
+                className="inputStyle pl-2 font-medium"
+                value="21/22/1992"
+              />
             </div>
 
-            <div class="mb-6 mt-2">
+            <div className="mb-6 mt-2">
               <label className="font-bold text-lg">Country/Region</label>
-              <MainInput style=" pl-2 font-medium" value="Abuja" />
+              <MainInput
+                className="inputStyle pl-2 font-medium"
+                value="Abuja"
+              />
             </div>
 
-            <div class="mb-6 mt-2">
+            <div className="mb-6 mt-2">
               <label className="font-bold text-lg">Phone Number</label>
-              <MainInput style=" pl-2 font-medium" value="0901234567" />
+              <MainInput
+                className="inputStyle pl-2 font-medium"
+                value="0901234567"
+              />
             </div>
 
             <Link to="/auth/verify">
-              <MainButton style="mt-5">Update Changes</MainButton>
+              <MainButton className="mt-5">Update Changes</MainButton>
             </Link>
             <div className="h-40"></div>
           </form>
