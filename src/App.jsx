@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { Notifications } from "./components/Notifications";
 import { AuthProvider, RequireAuth } from "react-auth-kit";
 import { lazily } from "react-lazily";
-import { store, persistedStore } from "./stores/reduxStore";
+import { store } from "./stores/reduxStore";
 import { PersistGate } from "redux-persist/integration/react";
 import SplashScreen from "./pages/splash/SplashScreen";
 import LoginScreen from "./pages/auth/LoginScreen";
@@ -79,10 +79,6 @@ export default function App() {
                         path="forget-password"
                         element={<ForgetPasswordScreen />}
                       ></Route>
-                      <Route
-                        path="reset-password"
-                        element={<ResetPasswordScreen />}
-                      ></Route>
                     </Route>
                     {/* MAIN Pages */}
                     <Route element={<Authenticate />}>
@@ -115,6 +111,10 @@ export default function App() {
                         <Route
                           path="/fetch-doctor"
                           element={<Loader />}
+                        ></Route>
+                        <Route
+                          path="reset-password"
+                          element={<ResetPasswordScreen />}
                         ></Route>
                       </Route>
                     </Route>

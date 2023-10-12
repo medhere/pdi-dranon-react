@@ -37,7 +37,7 @@ const Settings = () => {
     {
       title: "Change Password",
       icon: <RiGitRepositoryPrivateLine size={28} />,
-      link: "/auth/reset-password",
+      link: "/reset-password",
     },
   ];
   const Support = [

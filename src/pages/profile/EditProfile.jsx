@@ -8,10 +8,50 @@ import { MdEmail, MdLocationOn } from "react-icons/md";
 import { BsFillCalendarCheckFill, BsFillTelephoneFill } from "react-icons/bs";
 import MainButton from "../../components/webComponent/MainButton";
 import MainInput from "../../components/webComponent/MainInput";
+import { IconGenderBigender } from "@tabler/icons-react";
 import { ScrollToTop } from "../../libs/utils";
+import { useForm } from "react-hook-form";
+import { XHR } from "../../libs/request";
+import toast from "react-hot-toast";
+import { toastStyle } from "../../libs/utils";
+import { useAuthUser } from "react-auth-kit";
+
 const EditProfile = () => {
   ScrollToTop();
+  const authUser = useAuthUser();
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm({
+    defaultValues: {
+      name: authUser().name,
+      email: authUser().email,
+      dob: authUser().dob,
+      gender: authUser().gender,
+      state: authUser().state,
+      phone: authUser().phone,
+    },
+  });
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    await XHR("post", "api/update-user", data)
+      .then((res) => {
+        console.log(res);
+
+        toast.success("Updated Successfully!");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err?.response?.data?.message);
+      });
+  };
+
+  console.log(authUser());
   return (
     <>
       <section className="w-[100%] md:w-[100%] sm:w-[70%] lg:w-[60%] xl:w-[40%] px-4 mt-10">
@@ -30,54 +70,165 @@ const EditProfile = () => {
             HM
           </Avatar>
 
-          <form action="">
-            <div className="mb-6 mt-2">
-              <label className="font-bold text-lg">Full Name</label>
-              <MainInput
-                className="inputStyle pl-2 font-medium"
-                value="Harry Marguire"
-              />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex space-x-2 w-full">
+              <div className="mb-4 flex-1">
+                <div className="relative ">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                    <BiSolidUserPlus size={28} className="text-gray-500" />
+                  </div>
+                  <input
+                    id="name"
+                    className={`inputStyle ${
+                      errors?.name && "border border-red-500"
+                    }`}
+                    placeholder="First Name"
+                    {...register("name", {
+                      required: "First Name is required",
+                    })}
+                  />
+                </div>
+                {errors?.name && (
+                  <p className="text-[10px] mt-1 font-semibold text-red-500">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className="mb-6 mt-2">
-              <label className="font-bold text-lg">Email</label>
-              <MainInput
-                className="inputStyle pl-2 font-medium"
-                value="Harry@Marguire.com"
-              />
+            <div className=" mb-4 ">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <MdEmail size={28} className="text-gray-500" />
+                </div>
+                <input
+                  className={`inputStyle ${errors?.email && "border-red-500"}`}
+                  placeholder="Email"
+                  {...register("email", {
+                    required: "Email is required",
+                  })}
+                />
+              </div>
+              {errors?.email && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
-            <div className="mb-6 mt-2">
-              <label className="font-bold text-lg">Date of Birth</label>
-              <MainInput
-                className="inputStyle pl-2 font-medium"
-                value="21/22/1992"
-              />
+            <div className="mb-4">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <BsFillTelephoneFill size={28} className="text-gray-500" />
+                </div>
+                <input
+                  className={`inputStyle ${errors?.phone && "border-red-500"}`}
+                  placeholder="Phone Number"
+                  type="text"
+                  {...register("phone", {
+                    required: "Phone Number is required",
+                  })}
+                />
+              </div>
+              {errors?.phone && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.phone.message}
+                </p>
+              )}
             </div>
 
-            <div className="mb-6 mt-2">
-              <label className="font-bold text-lg">Country/Region</label>
-              <MainInput
-                className="inputStyle pl-2 font-medium"
-                value="Abuja"
-              />
+            <div className="mb-4">
+              <div className="relative ">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <MdLocationOn size={28} className="text-gray-500" />
+                </div>
+                <select
+                  className={`inputStyle ${errors?.state && "border-red-500"}`}
+                  placeholder="Location"
+                  type="text"
+                  {...register("state", {
+                    required: "state is required",
+                  })}
+                >
+                  <option value="" disabled selected className="text-gray-600">
+                    Select State
+                  </option>
+                  <option value="Abuja">Abuja</option>
+                  <option value="FCT">FCT</option>
+                  <option value="Lagos">Lagos</option>
+                </select>
+              </div>
+              {errors?.state && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.state.message}
+                </p>
+              )}
             </div>
 
-            <div className="mb-6 mt-2">
-              <label className="font-bold text-lg">Phone Number</label>
-              <MainInput
-                className="inputStyle pl-2 font-medium"
-                value="0901234567"
-              />
+            <div className="mb-4">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <BsFillCalendarCheckFill
+                    size={28}
+                    className="text-gray-500"
+                  />
+                </div>
+                <input
+                  className={`inputStyle ${errors?.dob && "border-red-500"}`}
+                  placeholder="Date Of Birth"
+                  type="date"
+                  {...register("dob", {
+                    required: "Date of birth is required",
+                  })}
+                />
+              </div>
+              {errors?.dob && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.dob.message}
+                </p>
+              )}
             </div>
 
-            <Link to="/auth/verify">
-              <MainButton className="mt-5">Update Changes</MainButton>
-            </Link>
-            <div className="h-40"></div>
+            <div className="mb-4">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <IconGenderBigender size={28} className="text-gray-500" />
+                </div>
+                <select
+                  className={`inputStyle ${errors?.gender && "border-red-500"}`}
+                  placeholder="Gender"
+                  type="Text"
+                  {...register("gender", {
+                    required: "Gender is required",
+                  })}
+                >
+                  <option
+                    value=""
+                    disabled
+                    selected
+                    className="text-gray-600"
+                    las
+                  >
+                    Select Gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              {errors?.gender && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.gender.message}
+                </p>
+              )}
+            </div>
+
+            <MainButton type="submit" style="mt-5">
+              Update
+            </MainButton>
           </form>
         </section>
       </section>
+      <div className="h-[10vh]" />
     </>
   );
 };

@@ -8,15 +8,21 @@ import { MdEmail, MdLocationOn } from "react-icons/md";
 import { BsFillCalendarCheckFill, BsFillTelephoneFill } from "react-icons/bs";
 import MainButton from "../../components/webComponent/MainButton";
 import MainInput from "../../components/webComponent/MainInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { IconGenderBigender } from "@tabler/icons-react";
 import { XHR } from "../../libs/request";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { toastStyle } from "../../libs/utils";
+import { useSignIn } from "react-auth-kit";
+import { useDispatch } from "react-redux";
+import { updateUserData } from "../../stores/reducers/user";
 
 const RegisterScreen = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const signIn = useSignIn();
   const {
     register,
     handleSubmit,
@@ -24,7 +30,7 @@ const RegisterScreen = () => {
     getValues,
   } = useForm({
     defaultValues: {
-      firstName: "",
+      name: "",
       lastName: "",
       email: "",
       dateOfBirth: "",
@@ -41,11 +47,19 @@ const RegisterScreen = () => {
     await XHR("post", "api/auth/register", data)
       .then((res) => {
         console.log(res);
-        toast.success(res?.response?.data?.message, toastStyle);
+        dispatch(updateUserData(res.data));
+        if (res.status == 200)
+          return toast.success("OTP sent to your email.", toastStyle);
+      })
+      .then(() => {
+        navigate("/auth/verify-otp");
       })
       .catch((err) => {
-        console.log(err);
-        toast.error(err?.response?.data?.message, toastStyle);
+        console.log(err.response.status);
+        if (err.response.status == 404)
+          return toast.error("Email has been taken.");
+
+        toast.error(err?.response?.data?.message);
       });
   };
   return (
@@ -63,39 +77,19 @@ const RegisterScreen = () => {
                   <BiSolidUserPlus size={28} className="text-gray-500" />
                 </div>
                 <input
-                  id="firstName"
+                  id="name"
                   className={`inputStyle ${
-                    errors?.firstName && "border border-red-500"
+                    errors?.name && "border border-red-500"
                   }`}
-                  placeholder="First Name"
-                  {...register("firstName", {
+                  placeholder="Full Name"
+                  {...register("name", {
                     required: "First Name is required",
                   })}
                 />
               </div>
-              {errors?.firstName && (
+              {errors?.name && (
                 <p className="text-[10px] mt-1 font-semibold text-red-500">
-                  {errors.firstName.message}
-                </p>
-              )}
-            </div>
-
-            <div className="mb-4 flex-1">
-              <div className="relative ">
-                <input
-                  id="lastName"
-                  className={`bg-[#f5f5f5] text-gray-900 font-medium text-lg rounded-lg block w-full pl-3 p-2.5 outline-none border ${
-                    errors?.lastName && "border border-red-500"
-                  }`}
-                  placeholder="Last Name"
-                  {...register("lastName", {
-                    required: "Last name is required",
-                  })}
-                />
-              </div>
-              {errors?.lastName && (
-                <p className="text-[10px] mt-1 font-semibold text-red-500">
-                  {errors.lastName.message}
+                  {errors.name.message}
                 </p>
               )}
             </div>

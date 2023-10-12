@@ -11,10 +11,19 @@ import {
   IconPhoto,
   IconMessageCircle,
 } from "@tabler/icons-react";
-import { ScrollToTop } from "../../libs/utils";
+import {
+  ScrollToTop,
+  formatDateWithDifference,
+  formatShortDate,
+} from "../../libs/utils";
+import { useAuthUser } from "react-auth-kit";
 
 const UserProfileScreen = () => {
   ScrollToTop();
+
+  const useAuth = useAuthUser();
+
+  console.log(useAuth());
   const navigate = useNavigate();
   return (
     <>
@@ -63,7 +72,7 @@ const UserProfileScreen = () => {
               HM
             </Avatar>
             <div className="flex items-center space-x-2">
-              <p className="text-2xl font-semibold">Harry Marguire</p>
+              <p className="text-2xl font-semibold">{useAuth().name}</p>
               <span className="bg-blue-500 rounded-full p-1" title="Verified">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +93,7 @@ const UserProfileScreen = () => {
 
             <p className="text-sm text-gray-900 font-semibold flex items-center">
               <BiLocationPlus size={22} color="black" />
-              Wuse, Abuja
+              {useAuth().state}
             </p>
           </div>
 
@@ -104,35 +113,31 @@ const UserProfileScreen = () => {
                 <ul className="mt-2 text-gray-700">
                   <li className="flex border-y py-2">
                     <span className="font-bold w-24">Full name:</span>
-                    <span className="text-gray-700">Harry Marguire</span>
+                    <span className="text-gray-700">{useAuth().name}</span>
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Birthday:</span>
-                    <span className="text-gray-700">24 Jul, 1991</span>
+                    <span className="text-gray-700">
+                      {formatShortDate(useAuth().dob)}
+                    </span>
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Joined:</span>
                     <span className="text-gray-700">
-                      10 Jan 2022 (25 days ago)
+                      {formatDateWithDifference(useAuth().created_at)}
                     </span>
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Mobile:</span>
-                    <span className="text-gray-700">(123) 123-1234</span>
+                    <span className="text-gray-700">{useAuth().phone}</span>
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Email:</span>
-                    <span className="text-gray-700">
-                      amandaross@example.com
-                    </span>
+                    <span className="text-gray-700">{useAuth().email}</span>
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Location:</span>
-                    <span className="text-gray-700">New York, US</span>
-                  </li>
-                  <li className="flex border-b py-2">
-                    <span className="font-bold w-24">Languages:</span>
-                    <span className="text-gray-700">English, Spanish</span>
+                    <span className="text-gray-700">{useAuth().state}</span>
                   </li>
                 </ul>
               </div>
@@ -178,7 +183,7 @@ const UserProfileScreen = () => {
                     </div>
                   </div>
 
-                  <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                  {/* <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-sm text-blue-600">
                         Active Consultation
@@ -212,7 +217,7 @@ const UserProfileScreen = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

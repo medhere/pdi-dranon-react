@@ -27,3 +27,6 @@ GET: api/packages
 GET: api/subscriptions
 GET: api/consultations
 
+POST: api/update-user [$request->all] ['firstName', 'lastName', 'phone', 'email', 'gender', 'state', 'dateOfBirth']
+
+Get: api/consultation/{consultation_id}      (eg:cul-00000)

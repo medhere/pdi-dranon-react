@@ -119,3 +119,35 @@ export function formatTime(timestamp) {
 
   return `${formattedHours}:${formattedMinutes}${amOrPm}`;
 }
+
+export function formatShortDate(inputDate) {
+  const date = new Date(inputDate);
+  const day = date.getUTCDate();
+  const month = date.toLocaleString("default", { month: "short" });
+  const year = date.getUTCFullYear();
+
+  return `${day}, ${month} ${year}`;
+}
+
+export function formatDateWithDifference(inputDate) {
+  const targetDate = new Date(inputDate);
+  const currentDate = new Date();
+
+  // Calculate the difference in days
+  const timeDifference = currentDate - targetDate;
+  const daysDifference = Math.abs(
+    Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+  );
+
+  // Format the target date
+  const day = targetDate.getUTCDate();
+  const month = targetDate.toLocaleString("default", { month: "short" });
+  const year = targetDate.getUTCFullYear();
+  const formattedDate = `${day}, ${month} ${year}`;
+
+  // Construct the final string
+  const formattedDifference = `(${daysDifference} days ago)`;
+
+  // return `${formattedDate} ${formattedDifference}`;
+  return `${formattedDate} `;
+}

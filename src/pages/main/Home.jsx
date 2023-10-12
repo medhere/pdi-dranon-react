@@ -120,9 +120,20 @@ const Home = () => {
         console.log(err);
       });
   };
+  const fetchSubscriptions = async () => {
+    await XHR("get", "api/subscriptions")
+      .then((res) => {
+        console.log(res.data);
+        // setConsultation(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     fetchConsultation();
+    fetchSubscriptions();
   }, []);
 
   return (
@@ -236,7 +247,7 @@ const Home = () => {
             </div>
             {consultation.map((consult, index) => (
               <Link
-                to={`/doctor/consultation/1`}
+                to={`/doctor/consultation/${consult.consultation_id}`}
                 className="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
               >
                 <img src={docImage2} alt="Laptop on Desk" className="w-1/3 " />
