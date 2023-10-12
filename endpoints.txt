@@ -22,3 +22,8 @@ GET: api/auth/reset-password/{token}
 
 POST: api/auth/reset-password
 ['email', 'password', 'password_confirmation', 'token']
+
+GET: api/packages
+GET: api/subscriptions
+GET: api/consultations
+

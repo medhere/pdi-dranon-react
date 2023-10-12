@@ -33,6 +33,7 @@ import CheckAuth from "./layout/CheckAuth";
 import { Toaster } from "react-hot-toast";
 import { Authenticate } from "./components/Auth";
 import { Logout } from "./pages/auth/Logout";
+import Subscription from "./pages/settings/Subscription";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -66,9 +67,8 @@ export default function App() {
                   <Routes>
                     <Route path="/" element={<SplashScreen />}></Route>
                     {/* AUTHENTICATION */}
-                    <Route path="auth">
+                    <Route path="auth" element={<CheckAuth />}>
                       <Route path="login" element={<LoginScreen />}></Route>
-                      <Route path="logout" element={<Logout />}></Route>
                       <Route
                         path="register"
                         element={<RegisterScreen />}
@@ -85,10 +85,13 @@ export default function App() {
                       ></Route>
                     </Route>
                     {/* MAIN Pages */}
-
                     <Route element={<Authenticate />}>
                       <Route element={<AppLayout />}>
                         <Route path="/home" element={<Home />}></Route>
+                        <Route
+                          path="/settings/subscription"
+                          element={<Subscription />}
+                        ></Route>
                         {/* PROFILE PAGES */}
                         <Route
                           path="/profile"
@@ -116,6 +119,7 @@ export default function App() {
                       </Route>
                     </Route>
                     {/* ERROR PAGES */}
+                    <Route path="logout" element={<Logout />}></Route>
                     <Route path="*" element={<>No route found</>}></Route>
                   </Routes>
                 </Loadables>

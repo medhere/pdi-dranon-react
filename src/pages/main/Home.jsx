@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiChevronLeftCircle } from "react-icons/bi";
 import MainHeader from "../../components/webComponent/MainHeader";
 import {
@@ -24,7 +24,7 @@ import { IconBuildingHospital } from "@tabler/icons-react";
 import { IconPill } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { IconMessageDots } from "@tabler/icons-react";
-import { ScrollToTop } from "../../libs/utils";
+import { ScrollToTop, formatDate, formatTime } from "../../libs/utils";
 import preg from "../../assets/images/New folder/preg.png";
 import baby from "../../assets/images/New folder/baby.png";
 import hair from "../../assets/images/New folder/hair.png";
@@ -33,6 +33,7 @@ import sex from "../../assets/images/New folder/sex.png";
 import digestion from "../../assets/images/New folder/digestion.png";
 import psyc from "../../assets/images/New folder/psyc.png";
 import { useAuthUser } from "react-auth-kit";
+import { XHR } from "../../libs/request";
 
 const Home = () => {
   ScrollToTop();
@@ -105,7 +106,24 @@ const Home = () => {
     },
   ];
 
+  const [consultation, setConsultation] = useState([]);
+
   const authUser = useAuthUser();
+
+  const fetchConsultation = async () => {
+    await XHR("get", "api/consultations")
+      .then((res) => {
+        console.log(res.data);
+        setConsultation(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchConsultation();
+  }, []);
 
   return (
     <>
@@ -201,70 +219,77 @@ const Home = () => {
             ))}
           </div>
         </section>
+
         {/* Consultation */}
-        <section>
-          <div className="flex justify-between items-center mt-10">
-            <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
-              Active Consultations
-            </h1>
-            <Link
-              to="/schedule"
-              className="text-orange-500 text-sm font-semibold cursor-pointer"
+        {consultation.length > 0 && (
+          <section>
+            <div className="flex justify-between items-center mt-10">
+              <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
+                Active Consultations
+              </h1>
+              <Link
+                to="/schedule"
+                className="text-orange-500 text-sm font-semibold cursor-pointer"
+              >
+                See More
+              </Link>
+            </div>
+            {consultation.map((consult, index) => (
+              <Link
+                to={`/doctor/consultation/1`}
+                className="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
+              >
+                <img src={docImage2} alt="Laptop on Desk" className="w-1/3 " />
+                <div className="flex flex-col flex-1 pt-2">
+                  <div className="flex-1  px-5 flex flex-col justify-center">
+                    <h2 className="font-bold text-xl md:text-3xl text-orange-700">
+                      {consult.createdby.name}
+                    </h2>
+                    <p className="text-orange-700">{consult.createdby.role}</p>
+                  </div>
+                  <div className="flex md:space-x-5 space-x-1 px-2 my-2">
+                    <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                      <AiOutlineCalendar />
+                      <p className="text-xs ml-1 font-medium">
+                        {formatDate(consult?.created_at)}
+                      </p>
+                    </div>
+                    <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                      <AiOutlineClockCircle />
+                      <p className="text-xs ml-1 font-medium">
+                        {formatTime(consult.created_at)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+            {/* <Link
+              to={`/doctor/consultation/2`}
+              className="bg-white rounded-lg border border-orange-400 flex my-6"
             >
-              See More
-            </Link>
-          </div>
-
-          <Link
-            to={`/doctor/consultation/1`}
-            className="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
-          >
-            <img src={docImage2} alt="Laptop on Desk" className="w-1/3 " />
-            <div className="flex flex-col flex-1 pt-2">
-              <div className="flex-1  px-5 flex flex-col justify-center">
-                <h2 className="font-bold text-xl md:text-3xl text-orange-700">
-                  Dr. Katie
-                </h2>
-                <p className="text-orange-700">surgeon</p>
-              </div>
-              <div className="flex md:space-x-5 space-x-1 px-2 my-2">
-                <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
-                  <AiOutlineCalendar />
-                  <p className="text-xs ml-1 font-medium">22th Nov</p>
+              <img src={docImage} alt="Laptop on Desk" className="w-1/3 " />
+              <div className="flex flex-col flex-1 pt-2">
+                <div className="flex-1 flex px-5  flex-col justify-center">
+                  <h2 className="font-bold text-xl md:text-3xl text-orange-700">
+                    Dr. Komolafe
+                  </h2>
+                  <p className="text-orange-700">specialist</p>
                 </div>
-                <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
-                  <AiOutlineClockCircle />
-                  <p className="text-xs ml-1 font-medium">10:30am</p>
+                <div className="flex md:space-x-5 space-x-1 px-2 my-2">
+                  <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                    <AiOutlineCalendar />
+                    <p className="text-xs ml-1 font-medium">22th Nov</p>
+                  </div>
+                  <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
+                    <AiOutlineClockCircle />
+                    <p className="text-xs ml-1 font-medium">10:30am</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-
-          <Link
-            to={`/doctor/consultation/2`}
-            className="bg-white rounded-lg border border-orange-400 flex my-6"
-          >
-            <img src={docImage} alt="Laptop on Desk" className="w-1/3 " />
-            <div className="flex flex-col flex-1 pt-2">
-              <div className="flex-1 flex px-5  flex-col justify-center">
-                <h2 className="font-bold text-xl md:text-3xl text-orange-700">
-                  Dr. Komolafe
-                </h2>
-                <p className="text-orange-700">specialist</p>
-              </div>
-              <div className="flex md:space-x-5 space-x-1 px-2 my-2">
-                <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
-                  <AiOutlineCalendar />
-                  <p className="text-xs ml-1 font-medium">22th Nov</p>
-                </div>
-                <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
-                  <AiOutlineClockCircle />
-                  <p className="text-xs ml-1 font-medium">10:30am</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </section>
+            </Link> */}
+          </section>
+        )}
         {/* What we do */}
         <section>
           <div className="flex justify-between items-center mt-10">

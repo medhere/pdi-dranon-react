@@ -44,7 +44,7 @@ const Settings = () => {
     {
       title: "My Subscription",
       icon: <AiFillCreditCard size={28} />,
-      link: "/edit",
+      link: "/settings/subscription",
     },
     {
       title: "Help & Support",
@@ -64,7 +64,7 @@ const Settings = () => {
       link: "/edit",
     },
     { title: "Add account", icon: <FiUsers size={28} />, link: "/edit" },
-    { title: "Log Out", icon: <FiLogOut size={28} />, link: "/auth/logout" },
+    { title: "Log Out", icon: <FiLogOut size={28} />, link: "/logout" },
   ];
 
   const navigate = useNavigate();
@@ -97,13 +97,14 @@ const Settings = () => {
 
           <section className="mt-4">
             {Support.map((item, index) => (
-              <div
+              <Link
+                to={item.link}
                 key={index}
                 className="flex items-center bg-gray-200 px-5 py-2 rounded-lg mt-2"
               >
                 {item.icon}
                 <h2 className="ml-3 font-semibold text-lg">{item.title}</h2>
-              </div>
+              </Link>
             ))}
           </section>
         </div>
