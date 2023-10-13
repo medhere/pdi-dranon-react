@@ -74,7 +74,7 @@ const Consultation = () => {
                 <p>{consultation?.createdby?.role}</p>
               </div>
             </div>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <MainButton>
                 <Link to={`/doctor/chat/1`}>
                   <div className="flex justify-center items-center">
@@ -91,7 +91,7 @@ const Consultation = () => {
                   </div>
                 </Link>
               </MainButton>
-            </div>
+            </div> */}
           </div>
         </div>
         <section className="mt-5">
