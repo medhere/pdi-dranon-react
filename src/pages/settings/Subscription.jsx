@@ -58,10 +58,13 @@ const Subscription = () => {
                       ₦&thinsp;
                     </span>
                     <span className="text-3xl font-bold ">
-                      {formatFigure(item?.price)}{" "}
+                      {formatFigure(item?.price)}
                     </span>
                   </span>
-                  <span className="font-medium">/ user</span>
+                  <span className="font-medium">
+                    /
+                    {item?.duration == 1 ? "month" : `${item?.duration} months`}
+                  </span>
                 </div>
               </div>
               <ul className="mb-10 font-medium text-xl">

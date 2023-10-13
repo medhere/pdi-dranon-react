@@ -34,12 +34,11 @@ const LoginScreen = () => {
           expiresIn: 60 * 24 * 30, //number	The time for which the auth token will last, in minutes
           tokenType: "Bearer", //string | 'Bearer'	The type of authentication token.
           authState: res?.data.user, //object (optional)	State of the authorized user. Eg: {name: Jhon, email: jhon@auth.com}
-          isSubscribed: res?.data.is_subscription,
         });
-        nav("/home");
       })
       .then(() => {
         toast.success(`Welcome Back!`, toastStyle);
+        nav("/home");
       })
       .catch((err) => {
         console.log(err);

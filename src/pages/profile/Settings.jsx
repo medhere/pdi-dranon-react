@@ -15,6 +15,7 @@ import MainHeader from "../../components/webComponent/MainHeader";
 import MiniHeader from "../../components/webComponent/MiniHeader";
 import { Link, useNavigate } from "react-router-dom";
 import { ScrollToTop } from "../../libs/utils";
+import { IconReceipt } from "@tabler/icons-react";
 
 const Settings = () => {
   ScrollToTop();
@@ -24,28 +25,33 @@ const Settings = () => {
       icon: <AiOutlineUser size={28} />,
       link: "/edit-profile",
     },
-    {
-      title: "Security",
-      icon: <MdOutlinePrivacyTip size={28} />,
-      link: "/edit",
-    },
-    {
-      title: "Notificaton",
-      icon: <MdOutlineNotificationsActive size={28} />,
-      link: "/edit",
-    },
+    // {
+    //   title: "Security",
+    //   icon: <MdOutlinePrivacyTip size={28} />,
+    //   link: "/edit",
+    // },
+    // {
+    //   title: "Notificaton",
+    //   icon: <MdOutlineNotificationsActive size={28} />,
+    //   link: "/edit",
+    // },
     {
       title: "Change Password",
       icon: <RiGitRepositoryPrivateLine size={28} />,
       link: "/reset-password",
     },
-  ];
-  const Support = [
     {
-      title: "My Subscription",
+      title: "My Subscriptions",
+      icon: <IconReceipt size={28} />,
+      link: "/settings/my-subscriptions",
+    },
+    {
+      title: "Subscription Packages",
       icon: <AiFillCreditCard size={28} />,
       link: "/settings/subscription",
     },
+  ];
+  const Support = [
     {
       title: "Help & Support",
       icon: <BsQuestionCircle size={28} />,
@@ -58,12 +64,7 @@ const Settings = () => {
     },
   ];
   const Others = [
-    {
-      title: "Report a problem",
-      icon: <AiOutlineFlag size={28} />,
-      link: "/edit",
-    },
-    { title: "Add account", icon: <FiUsers size={28} />, link: "/edit" },
+    // { title: "Add account", icon: <FiUsers size={28} />, link: "/edit" },
     { title: "Log Out", icon: <FiLogOut size={28} />, link: "/logout" },
   ];
 
@@ -92,7 +93,7 @@ const Settings = () => {
           </section>
         </div>
         {/* Support */}
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <MiniHeader text="Support & About" />
 
           <section className="mt-4">
@@ -107,7 +108,7 @@ const Settings = () => {
               </Link>
             ))}
           </section>
-        </div>
+        </div> */}
         {/* Others */}
         <div className="mt-8">
           <section className="mt-4">

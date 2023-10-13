@@ -18,8 +18,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { XHR } from "../../libs/request";
 import { useEffect } from "react";
 import { ScrollToTop, formatDate, formatTime } from "../../libs/utils";
+import { FileButton, Button, Group, Text } from "@mantine/core";
+import LabTestComponent from "../../components/webComponent/LabTestComponent";
 
 const Consultation = () => {
+  const [files, setFiles] = useState([]);
   const params = useParams();
   const [consultation, setConsultation] = useState({});
   const [diagnosis, setDiagnosis] = useState([]);
@@ -315,6 +318,8 @@ const Consultation = () => {
                         </h1>
                         <p className="text-gray-600 ">{item.comments}</p>
                       </div>
+
+                      <LabTestComponent />
                     </section>
                   ))}
                   <div className="h-[20vh]" />

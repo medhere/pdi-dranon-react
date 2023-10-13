@@ -34,6 +34,10 @@ import digestion from "../../assets/images/New folder/digestion.png";
 import psyc from "../../assets/images/New folder/psyc.png";
 import { useAuthUser } from "react-auth-kit";
 import { XHR } from "../../libs/request";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, Button } from "@mantine/core";
+import BasicModal from "../../components/webComponent/Modal";
+import MyModal from "../../components/webComponent/MyModal";
 
 const Home = () => {
   ScrollToTop();
@@ -110,6 +114,8 @@ const Home = () => {
 
   const authUser = useAuthUser();
 
+  const [opened, { open, close }] = useDisclosure(false);
+
   const fetchConsultation = async () => {
     await XHR("get", "api/consultations")
       .then((res) => {
@@ -120,20 +126,9 @@ const Home = () => {
         console.log(err);
       });
   };
-  const fetchSubscriptions = async () => {
-    await XHR("get", "api/subscriptions")
-      .then((res) => {
-        console.log(res.data);
-        // setConsultation(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   useEffect(() => {
     fetchConsultation();
-    fetchSubscriptions();
   }, []);
 
   return (
@@ -182,6 +177,8 @@ const Home = () => {
             <p className="text-orange-700 mb-2">
               Get The care you need at your fingertips!
             </p>
+            {/* <BasicModal /> */}
+            <MyModal />
           </div>
         </div>
         {/* Medical Specialties */}
@@ -275,30 +272,6 @@ const Home = () => {
                 </div>
               </Link>
             ))}
-            {/* <Link
-              to={`/doctor/consultation/2`}
-              className="bg-white rounded-lg border border-orange-400 flex my-6"
-            >
-              <img src={docImage} alt="Laptop on Desk" className="w-1/3 " />
-              <div className="flex flex-col flex-1 pt-2">
-                <div className="flex-1 flex px-5  flex-col justify-center">
-                  <h2 className="font-bold text-xl md:text-3xl text-orange-700">
-                    Dr. Komolafe
-                  </h2>
-                  <p className="text-orange-700">specialist</p>
-                </div>
-                <div className="flex md:space-x-5 space-x-1 px-2 my-2">
-                  <div className="flex flex-1 items-center py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
-                    <AiOutlineCalendar />
-                    <p className="text-xs ml-1 font-medium">22th Nov</p>
-                  </div>
-                  <div className="flex items-center flex-1 py-2 justify-center bg-orange-200 text-orange-700 rounded px-2">
-                    <AiOutlineClockCircle />
-                    <p className="text-xs ml-1 font-medium">10:30am</p>
-                  </div>
-                </div>
-              </div>
-            </Link> */}
           </section>
         )}
         {/* What we do */}

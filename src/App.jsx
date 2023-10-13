@@ -34,6 +34,7 @@ import { Toaster } from "react-hot-toast";
 import { Authenticate } from "./components/Auth";
 import { Logout } from "./pages/auth/Logout";
 import Subscription from "./pages/settings/Subscription";
+import MySubscription from "./pages/settings/MySubscription";
 
 // import { loadable } from 'react-lazily/loadable';
 // const { MyComponent } = loadable(() => import('./MyComponent'), { fallback: <div>Loading...</div>, });
@@ -87,6 +88,10 @@ export default function App() {
                         <Route
                           path="/settings/subscription"
                           element={<Subscription />}
+                        ></Route>
+                        <Route
+                          path="/settings/my-subscriptions"
+                          element={<MySubscription />}
                         ></Route>
                         {/* PROFILE PAGES */}
                         <Route

@@ -14,13 +14,19 @@ import { useForm } from "react-hook-form";
 import { XHR } from "../../libs/request";
 import toast from "react-hot-toast";
 import { toastStyle } from "../../libs/utils";
-import { useAuthUser } from "react-auth-kit";
+import { useAuthHeader, useAuthUser, useSignIn } from "react-auth-kit";
 
 const EditProfile = () => {
   ScrollToTop();
+
+  const signIn = useSignIn();
   const authUser = useAuthUser();
+  const authHeader = useAuthHeader();
   const navigate = useNavigate();
 
+  // console.log(authUser());
+
+  const token = authHeader().split(" ")[1];
   const {
     register,
     handleSubmit,
@@ -43,6 +49,12 @@ const EditProfile = () => {
       .then((res) => {
         console.log(res);
 
+        signIn({
+          token: token,
+          expiresIn: 60 * 24 * 30,
+          tokenType: "Bearer",
+          authState: { ...authUser(), ...res.data },
+        });
         toast.success("Updated Successfully!");
       })
       .catch((err) => {
@@ -65,9 +77,9 @@ const EditProfile = () => {
             color="cyan"
             radius="100%"
             size={150}
-            className="mx-auto my-5"
+            className="mx-auto my-5 uppercase"
           >
-            HM
+            {authUser().name.slice(0, 2)}
           </Avatar>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -177,6 +189,7 @@ const EditProfile = () => {
                   className={`inputStyle ${errors?.dob && "border-red-500"}`}
                   placeholder="Date Of Birth"
                   type="date"
+                  disabled
                   {...register("dob", {
                     required: "Date of birth is required",
                   })}
@@ -197,6 +210,7 @@ const EditProfile = () => {
                 <select
                   className={`inputStyle ${errors?.gender && "border-red-500"}`}
                   placeholder="Gender"
+                  disabled
                   type="Text"
                   {...register("gender", {
                     required: "Gender is required",

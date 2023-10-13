@@ -33,7 +33,7 @@ const Schedule = () => {
         </div>
       </div>
       {/* Consultation */}
-      {true ? (
+      {consultation.length > 0 ? (
         <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
@@ -105,7 +105,7 @@ const Schedule = () => {
         <section className="flex justify-center items-center h-[80vh]">
           <div>
             <h2 className="text-center font-medium text-xl mb-2">
-              You have no schedules!
+              You have no consultations!
             </h2>
             <IconCalendarSearch size={70} className="mx-auto" />
           </div>

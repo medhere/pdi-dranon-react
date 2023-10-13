@@ -151,3 +151,22 @@ export function formatDateWithDifference(inputDate) {
   // return `${formattedDate} ${formattedDifference}`;
   return `${formattedDate} `;
 }
+
+export function daysLeft(futureDate) {
+  const currentDate = new Date();
+  const targetDate = new Date(futureDate);
+
+  // Calculate the time difference in milliseconds
+  const timeDifference = targetDate - currentDate;
+
+  // Convert milliseconds to days
+  const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysLeft < 0) {
+    return `Expired`;
+  } else if (daysLeft === 0) {
+    return "Today";
+  } else {
+    return `${daysLeft} days left`;
+  }
+}
