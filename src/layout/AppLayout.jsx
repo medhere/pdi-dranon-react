@@ -39,7 +39,7 @@ const AppLayout = () => {
                 Schedule
               </span>
             </Link>
-            <Link
+            {/* <Link
               to="/doctors"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${
                 pathname.includes("/doctor") && "text-[#f18952] bg-white"
@@ -49,7 +49,7 @@ const AppLayout = () => {
               <span className="tab tab-explore block text-xs font-semibold">
                 Doctors
               </span>
-            </Link>
+            </Link> */}
             <Link
               to="/profile"
               className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${

@@ -16,7 +16,7 @@ export default function MyModal() {
     setIsOpen(true);
   }
 
-  const [subscription, setSubscription] = useState([]);
+  const [subscription, setSubscription] = useState({});
 
   useEffect(() => {
     fetchSubscriptions();
@@ -31,10 +31,10 @@ export default function MyModal() {
       })
       .then(() => {
         setTimeout(() => {
-          if (subscription.status !== "Active") {
-            openModal();
-          } else {
+          if (subscription.status == "Active") {
             closeModal();
+          } else {
+            openModal();
           }
         }, 5000);
       })
@@ -96,7 +96,7 @@ export default function MyModal() {
 
                       <h2 class="mt-6 font-black uppercase">
                         <span class="text-4xl font-black sm:text-5xl lg:text-6xl">
-                          Get 20% off
+                          Get 5% off
                         </span>
 
                         <span class="mt-2 block text-sm">
@@ -112,7 +112,7 @@ export default function MyModal() {
                       </Link>
 
                       <p class="mt-8 text-xs font-medium uppercase text-gray-400">
-                        Offer valid until 24th March, 2021 *
+                        Offer valid until 24th March, 2024
                       </p>
                     </div>
                   </section>
