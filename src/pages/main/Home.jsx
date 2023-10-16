@@ -38,6 +38,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
 import BasicModal from "../../components/webComponent/Modal";
 import MyModal from "../../components/webComponent/MyModal";
+import TawkTo from "../../components/webComponent/TawkTo";
 
 const Home = () => {
   ScrollToTop();
@@ -297,6 +298,12 @@ const Home = () => {
             ))}
           </div>
         </section>
+
+        <TawkTo
+          email={authUser().email}
+          name={authUser().name}
+          user_id={authUser().id}
+        />
 
         {/* Meet Doctors */}
         {/* <section>
