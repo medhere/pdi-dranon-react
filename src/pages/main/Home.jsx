@@ -299,7 +299,7 @@ const Home = () => {
         </section>
 
         {/* Meet Doctors */}
-        <section>
+        {/* <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
               Meet Our Specialist
@@ -379,7 +379,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </section>
       <div className="h-[20vh]" />
     </>

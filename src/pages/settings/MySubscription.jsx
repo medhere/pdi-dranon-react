@@ -43,7 +43,7 @@ const MySubscription = () => {
                 <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-sm text-indigo-600">
-                      Subscription
+                      Active Subscription
                     </span>
                     <span className="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">
                       {daysLeft(sub.end_date)}

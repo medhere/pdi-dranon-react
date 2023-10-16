@@ -37,7 +37,7 @@ const Schedule = () => {
         <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
-              Active Consultations
+              All Consultations
             </h1>
           </div>
 
@@ -71,7 +71,8 @@ const Schedule = () => {
               </div>
             </Link>
           ))}
-          <div className="flex justify-between items-center mt-10">
+
+          {/* <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
               Past Consultations
             </h1>
@@ -99,7 +100,7 @@ const Schedule = () => {
                 </div>
               </div>
             </div>
-          </Link>
+          </Link> */}
         </section>
       ) : (
         <section className="flex justify-center items-center h-[80vh]">

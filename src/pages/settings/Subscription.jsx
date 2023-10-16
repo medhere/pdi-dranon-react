@@ -2,14 +2,22 @@ import React, { useEffect, useState } from "react";
 import { BiChevronLeftCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import MainHeader from "../../components/webComponent/MainHeader";
-import { formatFigure, generateBrightHexColor } from "../../libs/utils";
+import {
+  formatFigure,
+  generateBrightHexColor,
+  toastStyle,
+} from "../../libs/utils";
 import { IconCheck } from "@tabler/icons-react";
 import { IconArrowBadgeRightFilled } from "@tabler/icons-react";
 import { XHR } from "../../libs/request";
+import { PaystackButton } from "react-paystack";
+import toast from "react-hot-toast";
+import { useAuthUser } from "react-auth-kit";
 
 const Subscription = () => {
   const navigate = useNavigate();
   const [packages, setPackages] = useState([]);
+  const auth = useAuthUser();
 
   const fetchPackages = async () => {
     await XHR("get", "api/packages")
@@ -73,13 +81,36 @@ const Subscription = () => {
                   <span className="ml-3">{item.desc}</span>
                 </li>
               </ul>
-              <a
-                href="#/"
-                className="flex justify-center  text-white items-center bg-orange-600 rounded-xl py-6 px-4 text-center  text-2xl"
-              >
-                <span>Choose Plan</span>
-                <IconArrowBadgeRightFilled size={29} />
-              </a>
+
+              <PaystackButton
+                publicKey={
+                  import.meta.env.MODE === "development"
+                    ? import.meta.env.VITE_PAYSTACK_TEST_KEY
+                    : import.meta.env.VITE_PAYSTACK_LIVE_KEY
+                }
+                amount={item.price * 100}
+                email={auth().email}
+                firstname={auth().name}
+                label="Dr Anonymous Subscription"
+                currency="NGN"
+                onSuccess={(ref) => {
+                  console.log(ref);
+                  toast.success(ref.status);
+                  // XHR('get', '', ref)
+                  // .then((res)=>{
+                  //   toast('Payment Successful'+ res.data)
+                  //   setTimeout(()=>{
+                  //     navigate('')
+                  //   }, 4000)
+                  // })
+                  // .catch(err=> toast('Payment Unprocessed! Contact Admin.'))
+                }}
+                onClose={() => toast("Payment Cancelled!")}
+                phone={auth().phone}
+                metadata={{ user_id: auth().id }}
+                text="Choose Plan"
+                className="flex justify-center w-full text-white items-center bg-orange-600 rounded-xl py-6 px-4 text-center  text-2xl"
+              />
             </div>
           ))}
         </div>
