@@ -82,7 +82,7 @@ export default function MyModal() {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white  text-left align-middle shadow-xl transition-all">
-                  <section class="overflow-hidden rounded-lg shadow-2xl md:grid md:grid-cols-3">
+                  <section class="overflow-hidden rounded-lg shadow-2xl">
                     <img
                       alt="Trainer"
                       src={modalPic}

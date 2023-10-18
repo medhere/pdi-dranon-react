@@ -27,7 +27,7 @@ const TawkTo = ({ email, name, user_id }) => {
   };
 
   return (
-    <>
+    <section className="absolute ">
       <TawkMessengerReact
         ref={tawkMessengerRef}
         propertyId={import.meta.env.VITE_TAWK_TO_PROPERTY_ID}
@@ -41,7 +41,7 @@ const TawkTo = ({ email, name, user_id }) => {
           toast("A doctor has joined the chat");
         }}
       />
-    </>
+    </section>
   );
 };
 

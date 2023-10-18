@@ -96,18 +96,20 @@ const Subscription = () => {
                 onSuccess={(ref) => {
                   console.log(ref);
                   toast.success(ref.status);
-                  // XHR('get', '', ref)
-                  // .then((res)=>{
-                  //   toast('Payment Successful'+ res.data)
-                  //   setTimeout(()=>{
-                  //     navigate('')
-                  //   }, 4000)
-                  // })
-                  // .catch(err=> toast('Payment Unprocessed! Contact Admin.'))
+                  XHR("get", "api/paystack/verify", ref)
+                    .then((res) => {
+                      toast("Payment Successful" + res.data);
+                      setTimeout(() => {
+                        navigate("");
+                      }, 4000);
+                    })
+                    .catch((err) =>
+                      toast("Payment Unprocessed! Contact Admin.")
+                    );
                 }}
                 onClose={() => toast("Payment Cancelled!")}
                 phone={auth().phone}
-                metadata={{ user_id: auth().id }}
+                metadata={{ user_id: auth().id, subscription_id: item.id }}
                 text="Choose Plan"
                 className="flex justify-center w-full text-white items-center bg-orange-600 rounded-xl py-6 px-4 text-center  text-2xl"
               />
