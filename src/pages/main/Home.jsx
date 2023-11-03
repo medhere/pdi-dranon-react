@@ -14,7 +14,7 @@ import {
   AiOutlineSearch,
 } from "react-icons/ai";
 import docImage from "../../assets/images/doc4.jpg";
-import docImage2 from "../../assets/images/doc5.jpg";
+import docImage2 from "../../assets/images/df.png";
 import {
   IconPhoneOutgoing,
   IconStethoscope,
@@ -248,7 +248,11 @@ const Home = () => {
                 to={`/doctor/consultation/${consult.consultation_id}`}
                 className="bg-white rounded-lg border border-orange-400 shadow-lg flex my-6"
               >
-                <img src={docImage2} alt="Laptop on Desk" className="w-1/3 " />
+                <img
+                  src={docImage2}
+                  alt="Laptop on Desk"
+                  className="w-1/3 rounded-l-lg"
+                />
                 <div className="flex flex-col flex-1 pt-2">
                   <div className="flex-1  px-5 flex flex-col justify-center">
                     <h2 className="font-bold text-xl md:text-3xl text-orange-700">

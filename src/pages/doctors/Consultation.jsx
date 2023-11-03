@@ -12,7 +12,7 @@ import {
   IconClipboardData,
 } from "@tabler/icons-react";
 import { IconTestPipeOff } from "@tabler/icons-react";
-import docImage from "../../assets/images/doc4.jpg";
+import docImage from "../../assets/images/df.png";
 import { IconCircleChevronLeft } from "@tabler/icons-react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { XHR } from "../../libs/request";
@@ -50,7 +50,7 @@ const Consultation = () => {
   return (
     <>
       <section className="w-[100%] md:w-[100%]  lg:w-[60%] xl:w-[40%] no-scrollbar">
-        <div className=" bg-white  overflow-hidden ">
+        <div className=" bg-transparent  overflow-hidden ">
           <div className="bg-cover h-32 bg-orange-100">
             <div className="flex items-center p-4">
               <IconCircleChevronLeft
@@ -60,7 +60,7 @@ const Consultation = () => {
               />
             </div>
           </div>
-          <div className=" px-4 pb-6">
+          <div className=" px-4">
             <div className="text-center sm:text-left sm:flex mb-4">
               <img
                 className="h-32 w-32 rounded-full border-4 border-white -mt-16 mr-4"
@@ -187,14 +187,14 @@ const Consultation = () => {
                             {consultation.bmi}
                           </p>
                         )}
-                        {consultation?.blood_pressure && (
+                        {/* {consultation?.blood_pressure && (
                           <p className="text-sm text-gray-600 mt-2">
                             <span className="text-gray-900 font-semibold">
                               Blood Pressure:
                             </span>{" "}
                             {consultation.blood_pressure}
                           </p>
-                        )}
+                        )} */}
                       </div>
                       <div className="bg-orange-50 p-6 rounded-lg shadow-lg m-1 mt-10">
                         <div className="">
@@ -220,7 +220,12 @@ const Consultation = () => {
                             Final Diagnosis
                           </h1>
                           <p className="text-gray-600 ">
-                            {item.provisional_diagnosis}
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: item.provisional_diagnosis,
+                              }}
+                            />
+                            {/* {item.provisional_diagnosis} */}
                           </p>
                         </div>
                       </div>
@@ -242,24 +247,6 @@ const Consultation = () => {
               {prescriptions.length > 0 ? (
                 <>
                   {prescriptions.map((item, index) => (
-                    // <section key={index} className="m-3">
-                    //   <div className="my-5">
-                    //     <h1 className="text-xl text-center font-semibold">
-                    //       Prescription {index + 1}
-                    //     </h1>
-                    //   </div>
-                    //   <div className="my-5">
-                    //     <h1 className="text-xl font-semibold">Drug Name</h1>
-                    //     <p className="text-sm text-gray-600">{item.drug_id}</p>
-                    //   </div>
-
-                    //   <div className="my-5">
-                    //     <h1 className="text-xl font-semibold">
-                    //       Doctors Comment
-                    //     </h1>
-                    //     <p className="text-gray-600 ">{item.comments}</p>
-                    //   </div>
-                    // </section>
                     <div class="bg-orange-50 p-6 rounded-lg shadow-lg m-5">
                       <h1 className="text-xl font-semibold">Drug Name</h1>
                       <p className="text-sm text-gray-600">{item.drug_id}</p>
