@@ -9,6 +9,7 @@ import { daysLeft, formatFigure } from "../../libs/utils";
 
 const MySubscription = () => {
   const [subscription, setSubscription] = useState([]);
+  const [isSubscribed, setIsSubscribed] = useState();
 
   useEffect(() => {
     fetchSubscriptions();
@@ -17,9 +18,10 @@ const MySubscription = () => {
   const fetchSubscriptions = async () => {
     await XHR("get", "api/subscriptions")
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         console.log(res.data.subscriptions);
         setSubscription(res.data.subscriptions);
+        setIsSubscribed(res.data);
       })
       .catch((err) => {
         console.log(err);
