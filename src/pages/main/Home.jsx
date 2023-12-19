@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { BiChevronLeftCircle } from "react-icons/bi";
 import MainHeader from "../../components/webComponent/MainHeader";
 import {
@@ -25,23 +25,19 @@ import { IconPill } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { IconMessageDots } from "@tabler/icons-react";
 import { ScrollToTop, formatDate, formatTime } from "../../libs/utils";
-import preg from "../../assets/images/New folder/preg.png";
-import baby from "../../assets/images/New folder/baby.png";
-import hair from "../../assets/images/New folder/hair.png";
-import stethoscope from "../../assets/images/New folder/stethoscope.png";
-import sex from "../../assets/images/New folder/sex.png";
-import digestion from "../../assets/images/New folder/digestion.png";
-import psyc from "../../assets/images/New folder/psyc.png";
+
 import { useAuthUser } from "react-auth-kit";
 import { XHR } from "../../libs/request";
-import { useDisclosure } from "@mantine/hooks";
-import { Modal, Button } from "@mantine/core";
+
 import BasicModal from "../../components/webComponent/Modal";
 import MyModal from "../../components/webComponent/MyModal";
 import TawkTo from "../../components/webComponent/TawkTo";
+import { Dialog, Transition } from "@headlessui/react";
+import Specialties from "../../components/Home/Specialties";
 
 const Home = () => {
   ScrollToTop();
+
   const Icons = [
     {
       title: "Doctors",
@@ -80,42 +76,10 @@ const Home = () => {
       ),
     },
   ];
-  const Specialties = [
-    {
-      title: "Woman's Health",
-      img: preg,
-    },
-    {
-      title: "Skin & Hair",
-      img: hair,
-    },
-    {
-      title: "Child Specialist",
-      img: baby,
-    },
-    {
-      title: "General Physician",
-      img: stethoscope,
-    },
-    {
-      title: "Sexology",
-      img: sex,
-    },
-    {
-      title: "Digestion",
-      img: digestion,
-    },
-    {
-      title: "Pyshatric",
-      img: psyc,
-    },
-  ];
 
   const [consultation, setConsultation] = useState([]);
 
   const authUser = useAuthUser();
-
-  const [opened, { open, close }] = useDisclosure(false);
 
   const fetchConsultation = async () => {
     await XHR("get", "api/consultations")
@@ -209,25 +173,7 @@ const Home = () => {
           </div>
         </div>
 
-        <section>
-          <div className="flex justify-between items-center mt-10">
-            <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
-              Medical Specialties
-            </h1>
-          </div>
-          <div className="grid grid-cols-4 mt-5 gap-5">
-            {Specialties.map((card) => (
-              <div className="group cursor-pointer">
-                <div className="bg-white mx-auto flex justify-center w-20 h-20 p-2 items-center duration-300 transition shadow-xl  rounded-2xl group-hover:scale-110">
-                  <img src={card.img} alt="" className="" />
-                </div>
-                <p className="text-center  text-xs max-w-[3rem] md:max-w-none mx-auto font-semibold mt-2 text-gray-700 group-hover:text-orange-700">
-                  {card.title}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Specialties />
 
         {/* Consultation */}
         {consultation.length > 0 && (
