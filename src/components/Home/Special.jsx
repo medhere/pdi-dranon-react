@@ -10,47 +10,9 @@ import digestion from "../../assets/images/New folder/digestion.png";
 import psyc from "../../assets/images/New folder/psyc.png";
 import lungs from "../../assets/images/New folder/lungs.png";
 import infections from "../../assets/images/New folder/infections.png";
+import { Link } from "react-router-dom";
 
-const Specialties = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalOptions, setModalOptions] = useState({});
-
-  //   const [allValue, setAllValue] = useState([]);
-  let allValue = [""];
-  const [value, setValue] = useState([]);
-
-  const addValue = (value) => {
-    setValue(value);
-    // setAllValue(prev=> value)
-    allValue.push(value);
-    console.log(allValue);
-  };
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal(id) {
-    const data = Specialties.find((special) => special.id == id);
-    console.log(data);
-    setModalOptions(data);
-    setIsOpen(true);
-  }
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (isOpen && event.target.classList.contains("modal")) {
-        closeModal();
-      }
-    };
-
-    window.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-    };
-  }, [isOpen]);
-
+const Special = () => {
   const Specialties = [
     {
       id: 1,
@@ -169,77 +131,115 @@ const Specialties = () => {
     },
   ];
 
+  const questions = [
+    { id: 1, title: "Is my Vaginal discharge/Itching normal?" },
+    { id: 2, title: "A dripping discharge from the penis. What do I do?" },
+    { id: 3, title: "How do I treat Vaginal bleeding?" },
+    {
+      id: 4,
+      title:
+        "There's persisting Pain around my pelvis sores, bumps or blisters on penis, anus, or mouth Painful intercourse. Should I be worried?",
+    },
+    { id: 5, title: "Burning pain with urine or with bowel movements" },
+    { id: 6, title: "Irregular menstruation. Can you help?" },
+    { id: 7, title: "Vaginal swelling" },
+    {
+      id: 8,
+      title:
+        "I was Raped/forced into sexual intercourse. Should I keep it to myself?",
+    },
+    { id: 9, title: "Rashes around the pelvic region. Would it go away?" },
+    { id: 10, title: "Can't do without alcohol. How do I regain control?" },
+    { id: 11, title: "Is smoking really addictive, harmful?" },
+    {
+      id: 12,
+      title:
+        "Could you tell me more about Mental retardation/Inability to assimilate?",
+    },
+    {
+      id: 13,
+      title: "Why do I have a constant feeling of apprehension or dread?",
+    },
+    {
+      id: 14,
+      title: "Restlessness, anxiety, and irritability. Should I give it time?",
+    },
+    { id: 15, title: "Anticipate the worst possible outcomes. Normal, right?" },
+    { id: 16, title: "Suicidal thoughts. Is it normal?" },
+    {
+      id: 17,
+      title:
+        "Recreational drugs. I may like to bring my use under control. Any idea?",
+    },
+    { id: 18, title: "Uncontrolled Anger. Any suggestion?" },
+    { id: 19, title: "Why do I feel like hurting myself or someone else?" },
+  ];
+
+  const [checkedItems, setCheckedItems] = useState([]);
+
+  const handleCheckboxChange = (title) => {
+    if (checkedItems.includes(title)) {
+      setCheckedItems((prevCheckedItems) =>
+        prevCheckedItems.filter((itemLabel) => itemLabel !== title)
+      );
+    } else {
+      setCheckedItems((prevCheckedItems) => [...prevCheckedItems, title]);
+    }
+  };
+
+  const handleSubmit = () => {
+    // Do something with the checked items, for example, send them to an API
+    console.log("Checked Items:", checkedItems);
+  };
+
   return (
     <div>
       <section>
         <div className="flex justify-between items-center mt-10">
-          <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
-            Medical Specialties
+          <h1 className={`font-bold text-xl mx-auto md:text-2xl text-blue-950`}>
+            What bothers you today?
           </h1>
         </div>
-        <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 px-4 mt-5">
-          <div class="relative flex items-start py-4 ml-2">
-            <input
-              id="1"
-              type="checkbox"
-              class="hidden peer"
-              name="preferred_activities[]"
-              value="1"
-            />
-            <label
-              for="1"
-              class="inline-flex items-center justify-between w-auto p-2 font-medium tracking-tight border rounded-lg cursor-pointer bg-brand-light text-brand-black border-orange-500 peer-checked:border-orange-400 peer-checked:bg-orange-700 peer-checked:text-white peer-checked:font-semibold peer-checked:underline peer-checked:decoration-brand-dark decoration-2"
-            >
-              <div class="flex items-center justify-center w-full">
-                <div class="text-sm text-brand-black">Checkbox Button One</div>
+        <form action="">
+          <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 px-4 mt-5">
+            {questions.map((item, index) => (
+              <div key={index} className="relative">
+                <input
+                  id={item.id}
+                  type="checkbox"
+                  class="hidden peer"
+                  checked={checkedItems.includes(item.title)}
+                  onChange={() => handleCheckboxChange(item.title)}
+                  name={item.title}
+                  value={item.title}
+                />
+                <label
+                  for={item.id}
+                  className="group cursor-pointer rounded-xl bg-white peer-checked:bg-orange-200  mx-auto flex items-center w-full shadow-xl"
+                >
+                  {/* <div className=" flex justify-center w-24 h-24 p-4 items-center duration-300 transition   rounded-2xl group-hover:scale-110">
+                  <img src={item.img} alt="" className="" />
+                </div> */}
+                  <p className="text-center  text-xs py-5 px-3 md:max-w-none mx-auto font-semibold mt-2 text-gray-700 peer-checked:text-white group-hover:text-orange-700">
+                    {item.title}
+                  </p>
+                </label>
               </div>
-            </label>
+            ))}
           </div>
-          {Specialties.map((card) => (
-            <div
-              onClick={() => openModal(card.id)}
-              className="group cursor-pointer rounded-xl bg-white mx-auto flex items-center w-full shadow-xl"
-            >
-              <div className=" flex justify-center w-24 h-24 p-4 items-center duration-300 transition   rounded-2xl group-hover:scale-110">
-                <img src={card.img} alt="" className="" />
-              </div>
-              <p className="text-center  text-xs  md:max-w-none mx-auto font-semibold mt-2 text-gray-700 group-hover:text-orange-700">
-                {card.title}
-              </p>
-              {isOpen && modalOptions.id === card.id && (
-                <>
-                  <div className="fixed inset-0 flex items-center justify-center z-50 ">
-                    <div className="fixed inset-0 bg-black/10 bg-opacity- backdrop-blur-sm"></div>
-                    <div className="modal fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none focus:outline-none m-auto">
-                      <section class="overflow-hidden rounded-lg shadow-2xl bg-white modal m-auto max-w-md">
-                        <div class="p-4 text-center sm:p-6 md:col-span-2 lg:p-8">
-                          <p class="text-sm mb-5 font-semibold uppercase tracking-widest">
-                            Please Select possible symptoms.
-                          </p>
-
-                          <MultiSelect
-                            label=""
-                            placeholder="Pick symptoms"
-                            onChange={(value) => addValue(value)}
-                            value={value}
-                            data={modalOptions.symptoms}
-                          />
-
-                          <p class="mt-8 text-xs font-medium uppercase text-gray-400">
-                            Select at least three symptoms.
-                          </p>
-                        </div>
-                      </section>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+          {/* <Link to={`/fetch-doctor`}> */}
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="py-2 px-6 mt-10  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+          >
+            Consult a Doctor
+          </button>
+          {/* </Link> */}
+        </form>
       </section>
     </div>
   );
 };
 
-export default Specialties;
+export default Special;

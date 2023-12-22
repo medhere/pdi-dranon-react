@@ -34,6 +34,7 @@ import MyModal from "../../components/webComponent/MyModal";
 import TawkTo from "../../components/webComponent/TawkTo";
 import { Dialog, Transition } from "@headlessui/react";
 import Specialties from "../../components/Home/Specialties";
+import Special from "../../components/Home/Special";
 
 const Home = () => {
   ScrollToTop();
@@ -173,7 +174,8 @@ const Home = () => {
           </div>
         </div>
 
-        <Specialties />
+        {/* <Specialties /> */}
+        <Special />
 
         {/* Consultation */}
         {consultation.length > 0 && (
