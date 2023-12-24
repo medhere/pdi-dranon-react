@@ -141,7 +141,7 @@ const Home = () => {
               Easy and Accessable
             </h2>
             <p className="text-orange-700 mb-2">
-              Get The care you need at your fingertips!
+              Get the care you need at your fingertips!
             </p>
             {/* <BasicModal /> */}
             <MyModal />
