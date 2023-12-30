@@ -59,8 +59,8 @@ export default function App() {
             <AuthProvider
               authType="localstorage" //cookie
               authName="auth"
-              // cookieDomain={window.location.hostname}
-              // cookieSecure={window.location.protocol === "https:"}
+            // cookieDomain={window.location.hostname}
+            // cookieSecure={window.location.protocol === "https:"}
             >
               <Router>
                 <Loadables>

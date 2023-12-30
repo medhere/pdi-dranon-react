@@ -83,7 +83,7 @@ const Home = () => {
   const authUser = useAuthUser();
 
   const fetchConsultation = async () => {
-    await XHR("get", "api/consultations")
+    await XHR("get", "consultations")
       .then((res) => {
         console.log(res.data);
         setConsultation(res.data);
@@ -103,16 +103,16 @@ const Home = () => {
         <div className="flex justify-between items-center">
           <div>
             <h1 className={`font-bold text-3xl text-blue-950`}>
-              Hi, {authUser().name}
+              Hi, {authUser().firstname} {authUser().lastname}
             </h1>
             <p className="font-semibold text-sm text-blue-900">
               How are you feeling today?
             </p>
           </div>
-          <MdOutlineNotificationsNone size={40} className="text-blue-950" />
+          {/* <MdOutlineNotificationsNone size={40} className="text-blue-950" /> */}
         </div>
 
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <div className="relative w-full">
             <input
               type="text"
@@ -128,15 +128,15 @@ const Home = () => {
               <AiOutlineSearch size={23} className="text-gray-500 font-bold" />
             </button>
           </div>
-        </div>
+        </div> */}
         {/* AD */}
-        <div className="bg-white rounded-lg shadow-lg mt-6">
+        <div className="bg-white rounded-lg shadow-lg mt-6 py-4">
           <img
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVkaWNhbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
             alt=""
             className="rounded-t-lg mx-auto"
           />
-          <div className="p-6">
+          <div className="p-3 text-center">
             <h2 className="font-bold mb-2 text-2xl text-orange-800">
               Easy and Accessable
             </h2>
@@ -161,14 +161,14 @@ const Home = () => {
             </h2>
             <div className="lg:mt-0 lg:flex-shrink-0 flex justify-end">
               <div className=" inline-flex justify-end rounded-md shadow">
-                <Link to={`/fetch-doctor`}>
+                {/* <Link to={`/fetch-doctor`}>
                   <button
                     type="button"
                     className="py-2 px-6  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                   >
                     Consult a Doctor
                   </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -228,7 +228,7 @@ const Home = () => {
           </section>
         )}
         {/* What we do */}
-        <section>
+        {/* <section>
           <div className="flex justify-between items-center mt-10">
             <h1 className={`font-bold text-xl md:text-2xl text-blue-950`}>
               Our Services
@@ -249,13 +249,13 @@ const Home = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
-        <TawkTo
+        {/* <TawkTo
           email={authUser().email}
           name={authUser().name}
           user_id={authUser().id}
-        />
+        /> */}
 
         {/* Meet Doctors */}
         {/* <section>

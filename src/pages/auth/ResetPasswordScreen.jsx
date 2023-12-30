@@ -35,7 +35,7 @@ const ResetPasswordScreen = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    await XHR("post", "api/auth/reset-password", {
+    await XHR("post", "auth/reset-password", {
       email: useAuth().email,
       token: useToken().split(" ")[1],
       ...data,

@@ -22,7 +22,7 @@ const ForgetPasswordScreen = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    await XHR("post", "api/auth/forgot-password", data)
+    await XHR("post", "auth/forgot-password", data)
       .then((res) => console.log(res))
       .catch((err) => {
         console.log(err);

@@ -34,18 +34,16 @@ const EditProfile = () => {
     getValues,
   } = useForm({
     defaultValues: {
-      name: authUser().name,
+      firstname: authUser().firstname,
+      lastname: authUser().lastname,
       email: authUser().email,
-      dob: authUser().dob,
-      gender: authUser().gender,
-      state: authUser().state,
       phone: authUser().phone,
     },
   });
 
   const onSubmit = async (data) => {
     console.log(data);
-    await XHR("post", "api/update-user", data)
+    await XHR("post", "update-user", data)
       .then((res) => {
         console.log(res);
 
@@ -79,33 +77,52 @@ const EditProfile = () => {
             size={150}
             className="mx-auto my-5 uppercase"
           >
-            {authUser().name.slice(0, 2)}
+            {authUser().firstname.slice(0, 2)}
           </Avatar>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex space-x-2 w-full">
-              <div className="mb-4 flex-1">
-                <div className="relative ">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <BiSolidUserPlus size={28} className="text-gray-500" />
-                  </div>
-                  <input
-                    id="name"
-                    className={`inputStyle ${
-                      errors?.name && "border border-red-500"
-                    }`}
-                    placeholder="First Name"
-                    {...register("name", {
-                      required: "First Name is required",
-                    })}
-                  />
+            <div className="mb-4">
+              <div className="relative ">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <BiSolidUserPlus size={28} className="text-gray-500" />
                 </div>
-                {errors?.name && (
-                  <p className="text-[10px] mt-1 font-semibold text-red-500">
-                    {errors.name.message}
-                  </p>
-                )}
+                <input
+                  id="name"
+                  className={`inputStyle ${errors?.firstname && "border border-red-500"
+                    }`}
+                  placeholder="First Name"
+                  {...register("firstname", {
+                    required: "First Name is required",
+                  })}
+                />
               </div>
+              {errors?.firstname && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.name.message}
+                </p>
+              )}
+            </div>
+
+            <div className="mb-4">
+              <div className="relative ">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                  <BiSolidUserPlus size={28} className="text-gray-500" />
+                </div>
+                <input
+                  id="name"
+                  className={`inputStyle ${errors?.lastname && "border border-red-500"
+                    }`}
+                  placeholder="Last Name"
+                  {...register("lastname", {
+                    required: "Last Name is required",
+                  })}
+                />
+              </div>
+              {errors?.lastname && (
+                <p className="text-[10px] mt-1 font-semibold text-red-500">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             <div className=" mb-4 ">
@@ -149,7 +166,7 @@ const EditProfile = () => {
               )}
             </div>
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <div className="relative ">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                   <MdLocationOn size={28} className="text-gray-500" />
@@ -175,9 +192,9 @@ const EditProfile = () => {
                   {errors.state.message}
                 </p>
               )}
-            </div>
+            </div> */}
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                   <BsFillCalendarCheckFill
@@ -200,9 +217,9 @@ const EditProfile = () => {
                   {errors.dob.message}
                 </p>
               )}
-            </div>
+            </div> */}
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                   <IconGenderBigender size={28} className="text-gray-500" />
@@ -234,7 +251,7 @@ const EditProfile = () => {
                   {errors.gender.message}
                 </p>
               )}
-            </div>
+            </div> */}
 
             <MainButton type="submit" style="mt-5">
               Update

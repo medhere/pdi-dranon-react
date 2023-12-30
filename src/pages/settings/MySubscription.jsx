@@ -16,7 +16,7 @@ const MySubscription = () => {
   }, []);
 
   const fetchSubscriptions = async () => {
-    await XHR("get", "api/subscriptions")
+    await XHR("get", "subscriptions")
       .then((res) => {
         console.log(res.data);
         console.log(res.data.subscriptions);

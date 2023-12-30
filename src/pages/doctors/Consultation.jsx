@@ -29,7 +29,7 @@ const Consultation = () => {
   const [labTest, setLabTest] = useState([]);
   const [prescriptions, setPrescriptions] = useState([]);
   const fetchSubscriptions = async () => {
-    await XHR("get", `api/consultation/${params.id}`)
+    await XHR("get", `consultation/${params.id}`)
       .then((res) => {
         console.log(res.data);
         setConsultation(res.data);

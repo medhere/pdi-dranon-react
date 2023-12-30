@@ -30,13 +30,13 @@ const AppLayout = () => {
             </Link>
             <Link
               to="/schedule"
-              className={`w-full  justify-center inline-block text-center pt-2 pb-1 ${
+              className={`w-full justify-center inline-block text-center pt-2 pb-1 ${
                 pathname.includes("/schedule") && "text-[#f18952] bg-white"
               }`}
             >
               <IconCalendarSearch size={26} className="mx-auto mb-1" />
               <span className="tab tab-kategori block text-xs font-semibold">
-                Schedule
+                Consultations
               </span>
             </Link>
             {/* <Link

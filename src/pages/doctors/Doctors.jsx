@@ -7,6 +7,8 @@ import { ScrollToTop } from "../../libs/utils";
 import { Link } from "react-router-dom";
 const Doctors = () => {
   ScrollToTop();
+
+  
   return (
     <>
       <section className="w-[100%] md:w-[100%] sm:w-[70%] lg:w-[60%] xl:w-[40%] px-4 mt-7">

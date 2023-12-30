@@ -9,7 +9,7 @@ import { formatDate, formatTime } from "../../libs/utils";
 const Schedule = () => {
   const [consultation, setConsultation] = useState([]);
   const fetchConsultation = async () => {
-    await XHR("get", "api/consultations")
+    await XHR("get", "consultations")
       .then((res) => {
         console.log(res.data);
         setConsultation(res.data);

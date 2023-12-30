@@ -36,10 +36,8 @@ const UserProfileScreen = () => {
   }, []);
 
   const fetchSubscriptions = async () => {
-    await XHR("get", "api/subscriptions")
+    await XHR("get", "subscriptions")
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
         setSubscription(res.data);
       })
       .catch((err) => {
@@ -90,7 +88,7 @@ const UserProfileScreen = () => {
               size={150}
               className="mx-auto my-5 uppercase"
             >
-              {useAuth().name.slice(0, 2)}
+              {useAuth().firstname.slice(0, 2)}
             </Avatar>
             <div className="flex items-center space-x-2">
               <p className="text-2xl font-semibold">{useAuth().name}</p>
@@ -134,7 +132,7 @@ const UserProfileScreen = () => {
                 <ul className="mt-2 text-gray-700">
                   <li className="flex border-y py-2">
                     <span className="font-bold w-24">Full name:</span>
-                    <span className="text-gray-700">{useAuth().name}</span>
+                    <span className="text-gray-700">{useAuth().firstname} {useAuth().lastname}</span>
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Birthday:</span>
@@ -158,7 +156,7 @@ const UserProfileScreen = () => {
                   </li>
                   <li className="flex border-b py-2">
                     <span className="font-bold w-24">Location:</span>
-                    <span className="text-gray-700">{useAuth().state}</span>
+                    <span className="text-gray-700">{useAuth().district} {useAuth().town}</span>
                   </li>
                 </ul>
               </div>

@@ -3,7 +3,8 @@ import { loadProgressBar } from "axios-progress-bar";
 import useAxios from "axios-hooks";
 
 // export const REQUEST_URI = `https://${window.location.hostname}:4000/api`
-export const REQUEST_URI = "https://admin.doctoranonymous.ng/";
+// export const REQUEST_URI = "https://admin.doctoranonymous.ng/";
+export const REQUEST_URI = "http://localhost:8000/";
 // export const REQUEST_URI = import.meta.env.MODE === 'development' ? 'http://localhost:8006/api/' : 'https://api.hc.dailybreadserver.com/api'
 
 loadProgressBar();
@@ -79,7 +80,7 @@ export const XHR = async (
     url,
     method,
     timeout: 10000,
-    baseURL: REQUEST_URI,
+    baseURL: REQUEST_URI+'api/dranon/',
     headers: { Authorization: auth ? `Bearer ${auth}` : undefined },
     params: method === "get" ? userdata : undefined,
     data: method !== "get" ? userdata : undefined,
@@ -108,7 +109,7 @@ export const useXHR = (
       url,
       method,
       timeout: 20000,
-      baseURL: REQUEST_URI,
+      baseURL: REQUEST_URI+'api/dranon/',
       headers: { Authorization: auth ? `Bearer ${auth}` : undefined },
       params: method === "get" ? userdata : undefined,
       data: method !== "get" ? userdata : undefined,

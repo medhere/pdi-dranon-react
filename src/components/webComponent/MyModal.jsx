@@ -23,7 +23,7 @@ export default function MyModal() {
   }, []);
 
   const fetchSubscriptions = async () => {
-    await XHR("get", "api/subscriptions")
+    await XHR("get", "subscriptions")
       .then((res) => {
         console.log(res);
         console.log(res.data);

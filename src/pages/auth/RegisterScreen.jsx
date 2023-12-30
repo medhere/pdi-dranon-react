@@ -44,7 +44,7 @@ const RegisterScreen = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    await XHR("post", "api/auth/register", data)
+    await XHR("post", "auth/register", data)
       .then((res) => {
         console.log(res);
         dispatch(updateUserData(res.data));
@@ -62,6 +62,8 @@ const RegisterScreen = () => {
         toast.error(err?.response?.data?.message);
       });
   };
+
+  
   return (
     <body className="min-h-screen SubBg w-screen py-16 bg-[#f6e0ce] flex flex-col justify-center items-center">
       <section className="w-[100%] md:w-[100%] lg:w-[60%] xl:w-[40%] px-4">
@@ -71,6 +73,7 @@ const RegisterScreen = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex space-x-2 w-full">
+
             <div className="mb-4 flex-1">
               <div className="relative ">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
@@ -78,9 +81,8 @@ const RegisterScreen = () => {
                 </div>
                 <input
                   id="name"
-                  className={`inputStyle ${
-                    errors?.name && "border border-red-500"
-                  }`}
+                  className={`inputStyle ${errors?.name && "border border-red-500"
+                    }`}
                   placeholder="Full Name"
                   {...register("name", {
                     required: "First Name is required",
@@ -169,9 +171,8 @@ const RegisterScreen = () => {
                 <BsFillCalendarCheckFill size={28} className="text-gray-500" />
               </div>
               <input
-                className={`inputStyle ${
-                  errors?.dateOfBirth && "border-red-500"
-                }`}
+                className={`inputStyle ${errors?.dateOfBirth && "border-red-500"
+                  }`}
                 placeholder="Date Of Birth"
                 type="date"
                 {...register("dateOfBirth", {
@@ -250,9 +251,8 @@ const RegisterScreen = () => {
                 <BiSolidLockOpen size={28} className="text-gray-500" />
               </div>
               <input
-                className={`inputStyle ${
-                  errors?.password_confirmation && "border-red-500"
-                }`}
+                className={`inputStyle ${errors?.password_confirmation && "border-red-500"
+                  }`}
                 placeholder="Confirm Password"
                 type="password"
                 {...register("password_confirmation", {

@@ -25,7 +25,7 @@ const Subscription = () => {
   }, []);
 
   const fetchSubscriptions = async () => {
-    await XHR("get", "api/subscriptions")
+    await XHR("get", "subscriptions")
       .then((res) => {
         console.log(res.data);
         setIsSubscribed(res.data);
@@ -36,7 +36,7 @@ const Subscription = () => {
   };
 
   const fetchPackages = async () => {
-    await XHR("get", "api/packages")
+    await XHR("get", "subscription/plans")
       .then((res) => {
         console.log(res?.data);
         setPackages(res?.data);
@@ -85,28 +85,28 @@ const Subscription = () => {
                   />
                   <div className="ml-5">
                     <span className="block text-3xl font-semibold ">
-                      {item?.name}
+                      {item?.sub_name}
                     </span>
                     <span>
-                      <span className="font-medium text-xl align-top">
-                        ₦&thinsp;
-                      </span>
                       <span className="text-3xl font-bold ">
-                        {formatFigure(item?.price)}
+                        {formatFigure(item?.sub_fee)}
+                      </span>
+                      <span className="font-medium text-xl align-top">
+                        se
                       </span>
                     </span>
                     <span className="font-medium">
                       /
-                      {item?.duration == 1
-                        ? "month"
-                        : `${item?.duration} months`}
+                      {item?.sub_type_duration == 1
+                        ? `${item?.sub_type_duration} ${item?.sub_type}`
+                        : `${item?.sub_type_duration} ${item?.sub_type} s`}
                     </span>
                   </div>
                 </div>
                 <ul className="mb-10 font-medium text-xl">
                   <li className="flex mb-6">
                     <IconCheck />
-                    <span className="ml-3">{item.desc}</span>
+                    <span className="ml-3">{item.sub_description}</span>
                   </li>
                 </ul>
 
@@ -124,7 +124,7 @@ const Subscription = () => {
                   onSuccess={(ref) => {
                     console.log(ref);
                     toast.success(ref.status);
-                    XHR("get", "api/paystack/verify", ref)
+                    XHR("get", "paystack/verify", ref)
                       .then((res) => {
                         toast("Payment Successful" + res.data);
                         setTimeout(() => {

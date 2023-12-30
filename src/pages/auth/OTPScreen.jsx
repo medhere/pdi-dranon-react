@@ -19,7 +19,7 @@ const OTPScreen = () => {
   const signIn = useSignIn();
 
   const onSubmit = async () => {
-    await XHR("post", "api/auth/verify/otp", {
+    await XHR("post", "auth/verify/otp", {
       otp: pinValues,
       email: email,
       token: token,

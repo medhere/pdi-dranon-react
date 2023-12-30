@@ -25,7 +25,7 @@ const LoginScreen = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    await XHR("post", "api/auth/login", data)
+    await XHR("post", "auth/login", data)
       .then((res) => {
         console.log(res);
 
