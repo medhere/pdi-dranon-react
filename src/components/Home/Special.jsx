@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import { MultiSelect } from "@mantine/core";
-// import preg from "../../assets/images/New folder/preg.png";
-// import baby from "../../assets/images/New folder/baby.png";
-// import hair from "../../assets/images/New folder/hair.png";
-// import stethoscope from "../../assets/images/New folder/stethoscope.png";
-// import sex from "../../assets/images/New folder/sex.png";
-// import digestion from "../../assets/images/New folder/digestion.png";
-// import psyc from "../../assets/images/New folder/psyc.png";
-// import lungs from "../../assets/images/New folder/lungs.png";
-// import infections from "../../assets/images/New folder/infections.png";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Special = () => {
+  const nav = useNavigate()
 
   const questions = [
     { id: 1, title: "Is my Vaginal discharge/Itching normal?" },
@@ -70,7 +61,8 @@ const Special = () => {
   };
 
   const handleSubmit = () => {
-    console.log("Checked Items:", checkedItems);    
+    // console.log("Checked Items:", checkedItems);    
+    nav('/doctor/chat')
     //dispatch to redux
     // Do something with the checked items, for example, send them to an API
   };
@@ -79,12 +71,12 @@ const Special = () => {
     <div>
       <section>
         <div className="flex justify-between items-center mt-10">
-          <h1 className="font-bold text-xl text-center mx-auto md:text-2xl text-blue-950">
+          <h1 className="font-bold text-2xl text-center mx-auto md:text-2xl text-blue-950">
             What bothers you today?
-            <p className="text-base">Select, then chat with a medical pro</p>
+            <p className="text-xl">Chat with a medical professional</p>
           </h1>
         </div>
-        <form action="">
+        {/* <form action="">
           <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 px-4 mt-5">
             {questions.map((item, index) => (
               <div key={index} className="relative">
@@ -101,16 +93,16 @@ const Special = () => {
                   for={item.id}
                   className="group cursor-pointer rounded-xl bg-white peer-checked:bg-orange-200  mx-auto flex items-center w-full shadow-xl"
                 >
-                  {/* <div className=" flex justify-center w-24 h-24 p-4 items-center duration-300 transition   rounded-2xl group-hover:scale-110">
+                  <div className=" flex justify-center w-24 h-24 p-4 items-center duration-300 transition   rounded-2xl group-hover:scale-110">
                   <img src={item.img} alt="" className="" />
-                </div> */}
+                </div> 
                   <p className="text-center text-base py-5 px-3 md:max-w-none mx-auto font-semibold mt-2 text-gray-700 peer-checked:text-white group-hover:text-orange-700">
                     {item.title}
                   </p>
                 </label>
               </div>
             ))}
-          </div>
+          </div> */}
           {/* <Link to={`/fetch-doctor`}> */}
           <button
             onClick={handleSubmit}
@@ -120,7 +112,7 @@ const Special = () => {
             Consult a Doctor
           </button>
           {/* </Link> */}
-        </form>
+        {/* </form> */}
       </section>
     </div>
   );

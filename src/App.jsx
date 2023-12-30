@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Outlet,
@@ -76,51 +76,24 @@ export default function App() {
                       ></Route>
                       <Route path="verify" element={<VerifyScreen />}></Route>
                       <Route path="verify-otp" element={<OTPScreen />}></Route>
-                      <Route
-                        path="forget-password"
-                        element={<ForgetPasswordScreen />}
-                      ></Route>
+                      <Route path="forget-password" element={<ForgetPasswordScreen />} ></Route>
                     </Route>
                     {/* MAIN Pages */}
                     <Route element={<Authenticate />}>
                       <Route element={<AppLayout />}>
                         <Route path="/home" element={<Home />}></Route>
-                        <Route
-                          path="/settings/subscription"
-                          element={<Subscription />}
-                        ></Route>
-                        <Route
-                          path="/settings/my-subscriptions"
-                          element={<MySubscription />}
-                        ></Route>
+                        <Route path="/settings/subscription" element={<Subscription />} ></Route>
+                        <Route path="/settings/my-subscriptions" element={<MySubscription />} ></Route>
                         {/* PROFILE PAGES */}
-                        <Route
-                          path="/profile"
-                          element={<UserProfileScreen />}
-                        ></Route>
-                        <Route
-                          path="/edit-profile"
-                          element={<EditProfile />}
-                        ></Route>
+                        <Route path="/profile" element={<UserProfileScreen />} ></Route>
+                        <Route path="/edit-profile" element={<EditProfile />} ></Route>
                         <Route path="/settings" element={<Settings />}></Route>
                         <Route path="/doctors" element={<Doctors />}></Route>
                         <Route path="/schedule" element={<Schedule />}></Route>
-                        <Route
-                          path="/doctor/chat/:id"
-                          element={<DoctorChat />}
-                        ></Route>
-                        <Route
-                          path="/doctor/consultation/:id"
-                          element={<Consultation />}
-                        ></Route>
-                        <Route
-                          path="/fetch-doctor"
-                          element={<Loader />}
-                        ></Route>
-                        <Route
-                          path="reset-password"
-                          element={<ResetPasswordScreen />}
-                        ></Route>
+                        <Route path="/doctor/chat/:id" element={<DoctorChat />} ></Route>
+                        <Route path="/doctor/consultation/:id" element={<Consultation />} ></Route>
+                        <Route path="/fetch-doctor" element={<Loader />} ></Route>
+                        <Route path="reset-password" element={<ResetPasswordScreen />} ></Route>
                       </Route>
                     </Route>
                     {/* ERROR PAGES */}

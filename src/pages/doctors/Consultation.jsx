@@ -147,6 +147,14 @@ const Consultation = () => {
                             {consultation.pulse_rate}
                           </p>
                         )}
+                        {consultation?.blood_pressure && (
+                          <p className="text-sm text-gray-600 mt-2">
+                            <span className="text-gray-900 font-semibold">
+                              Blood Pressure:
+                            </span>{" "}
+                            {consultation.blood_pressure}
+                          </p>
+                        )}
                         {consultation?.temperature && (
                           <p className="text-sm text-gray-600 mt-2">
                             <span className="text-gray-900 font-semibold">

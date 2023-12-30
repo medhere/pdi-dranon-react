@@ -25,8 +25,6 @@ export default function MyModal() {
   const fetchSubscriptions = async () => {
     await XHR("get", "subscriptions")
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
         setSubscription(res.data);
       })
       .then(() => {
@@ -36,7 +34,7 @@ export default function MyModal() {
           } else {
             openModal();
           }
-        }, 5000);
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
@@ -91,16 +89,16 @@ export default function MyModal() {
 
                     <div class="p-4 text-center sm:p-6 md:col-span-2 lg:p-8">
                       <p class="text-sm font-semibold uppercase tracking-widest">
-                        Run with the pack
+                        Enjoy stellar services
                       </p>
 
                       <h2 class="mt-6 font-black uppercase">
                         <span class="text-4xl font-black sm:text-5xl lg:text-6xl">
-                          Get 5% off
+                          Select a package...
                         </span>
 
                         <span class="mt-2 block text-sm">
-                          On your Subscription
+                          to get started!
                         </span>
                       </h2>
 
@@ -108,12 +106,9 @@ export default function MyModal() {
                         class="mt-8 inline-block w-full bg-orange-500 py-4 text-sm font-bold uppercase tracking-widest text-white"
                         to="/settings/subscription"
                       >
-                        Get Discount
+                        Subscribe Now
                       </Link>
 
-                      <p class="mt-8 text-xs font-medium uppercase text-gray-400">
-                        Offer valid until 24th March, 2024
-                      </p>
                     </div>
                   </section>
                 </Dialog.Panel>
